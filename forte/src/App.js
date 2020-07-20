@@ -18,27 +18,26 @@ import Dashboard from './Components/Routes/Dashboard/Dashboard';
 export const DataContext = createContext();
 
 const App = () => {
-  const [activeUser, setActiveUser] = useState({});
-  
+	const [ activeUser, setActiveUser ] = useState({});
 
-  return (
-    <Switch>
-      <Route exact path='/' component={Landing}/>
-      <Route exact path='/about' component={About}/>
-      <Route exact path='/meetTheTeam' component={MeetTheTeam}/>
+	return (
+		<Switch>
+			<Route exact path="/" component={Landing} />
+			<Route exact path="/about" component={About} />
+			<Route exact path="/meetTheTeam" component={MeetTheTeam} />
 
-      <DataContext.Provider value={{ activeUser, setActiveUser }}>
-        <Route exact path='/signup' component={SignUp}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/deleteProfile' component={DeleteProfile}/>  
-        <Route exact path='/editProfile' component={EditProfile}/>    
-        <Route exact path='/connections' component={Connections}/>
-        <Route exact path='/profile' component={Profile}/>
-        <Route exact path='/matches' component={Matches}/>
-        <Route exact path='/dashboard' component={Dashboard}/>
-      </DataContext.Provider>
-    </Switch>
-  );
-}
+			<DataContext.Provider value={{ activeUser, setActiveUser }}>
+				<Route exact path="/signup" component={SignUp} />
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/deleteProfile" component={DeleteProfile} />
+				<Route exact path="/editProfile" component={EditProfile} />
+				<Route exact path="/connections" component={Connections} />
+				<Route exact path="/profile" component={Profile} />
+				<Route exact path="/matches" component={Matches} />
+				<Route exact path="/dashboard" component={Dashboard} />
+			</DataContext.Provider>
+		</Switch>
+	);
+};
 
 export default withRouter(App);
