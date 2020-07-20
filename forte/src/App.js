@@ -19,6 +19,7 @@ export const DataContext = createContext();
 
 const App = () => {
   const [activeUser, setActiveUser] = useState({});
+  
 
   return (
     <Switch>
@@ -26,7 +27,7 @@ const App = () => {
       <Route exact path='/about' component={About}/>
       <Route exact path='/meetTheTeam' component={MeetTheTeam}/>
 
-      <DataContext.Provider value={{ activeUser }}>
+      <DataContext.Provider value={{ activeUser, setActiveUser }}>
         <Route exact path='/signup' component={SignUp}/>
         <Route exact path='/login' component={Login}/>
         <Route exact path='/deleteProfile' component={DeleteProfile}/>  
