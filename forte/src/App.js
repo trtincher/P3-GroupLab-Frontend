@@ -5,9 +5,9 @@ import './App.css';
 import Landing from './Components/Routes/Landing/Landing';
 import About from './Components/Routes/About/About';
 import MeetTheTeam from './Components/Routes/MeetTheTeam/MeetTheTeam';
+
 import SignUp from './Components/Routes/SignUp/SignUp';
 import Login from './Components/Routes/Login/Login';
-
 import DeleteProfile from './Components/Routes/DeleteProfile/DeleteProfile';
 import EditProfile from './Components/Routes/EditProfile/EditProfile';
 import Connections from './Components/Routes/Connections/Connections';
@@ -25,10 +25,10 @@ const App = () => {
       <Route exact path='/' component={Landing}/>
       <Route exact path='/about' component={About}/>
       <Route exact path='/meetTheTeam' component={MeetTheTeam}/>
-      <Route exact path='/signup' component={SignUp}/>
-      <Route exact path='/login' component={Login}/>
 
       <DataContext.Provider value={{ activeUser }}>
+        <Route exact path='/signup' component={SignUp}/>
+        <Route exact path='/login' component={Login}/>
         <Route exact path='/deleteProfile' component={DeleteProfile}/>  
         <Route exact path='/editProfile' component={EditProfile}/>    
         <Route exact path='/connections' component={Connections}/>
