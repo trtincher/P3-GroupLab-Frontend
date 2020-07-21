@@ -63,7 +63,8 @@ const Dashboard = () => {
 	  useEffect(() => {
 		const makeAPICall = async () => {
 		  try {
-			const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers`);
+			// const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers`);
+			const response = await axios(`http://localhost:4000/api/teachers`);
 			console.log("Response teachers: ", response);
 			setTeacherMatches(response.data);
 		  } catch (err) {
@@ -91,17 +92,17 @@ const Dashboard = () => {
 		});
 
 
-		let matchCounter = 0
+		let matchCounterTeach = 0
 		for (let i=0; i<studentMatches.length; i++) {
 			idiomList.forEach( (el, index) => {
 				if( el === studentMatches[i].idiom) {
-					matchCounter++
+					matchCounterTeach++
 				}
 			})
 		}
 
 
-		console.log('matchCounter - ', matchCounter)
+		console.log('matchCounter - ', matchCounterTeach)
 
 
 		return (
@@ -112,7 +113,7 @@ const Dashboard = () => {
 				<Link to='/connections'>{activeUser[0].studentRoster.length}</Link>
 
 				<h2>Matches</h2>
-				<Link to='/matches'>{matchCounter}</Link>
+				<Link to='/matches'>{matchCounterTeach}</Link>
 
 				<h2>Instruments</h2>
 				<h2>{idiomList.length}</h2>
@@ -125,18 +126,21 @@ const Dashboard = () => {
 
 		const userName = activeUser[0].firstName;
 
+		console.log('student')
 
-		// console.log('matchesss - ', studentMatches.length)
+		let matchCounterStudent = 0
+		for (let i=0; i<teacherMatches.length; i++) {
+			if( activeUser[0].idiom === teacherMatches[i].idiom1) {
+				matchCounterStudent++
+			} if ( activeUser[0].idiom === teacherMatches[i].idiom2) {
+				matchCounterStudent++
+			} if ( activeUser[0].idiom === teacherMatches[i].idiom3) {
+				matchCounterStudent++
+			}
+		}
 
-		// let matchCounter = 0
-		// for (let i=0; i<studentMatches.length; i++) {
-		// 	idiomList.forEach( (el, index) => {
-		// 		if( el === studentMatches[i].idiom) {
-		// 			matchCounter++
-		// 		}
-		// 	})
-		// }
 
+		// students only ever have 1 or 0 instruments
 		let idiomCount = 0
 		if (activeUser[0].idiom.length > -1) {
 			idiomCount++
@@ -151,7 +155,7 @@ const Dashboard = () => {
 				<Link to='/connections'>{activeUser[0].myTeachers.length}</Link>
 
 				<h2>Matches</h2>
-				<Link to='/matches'></Link>
+				<Link to='/matches'>{matchCounterStudent}</Link>
 
 				<h2>Instruments</h2>
 				<h2>{idiomCount}</h2>
