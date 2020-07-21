@@ -18,6 +18,7 @@ import Dashboard from './Components/Routes/Dashboard/Dashboard';
 export const DataContext = createContext();
 
 const App = () => {
+	
 	const [ activeUser, setActiveUser ] = useState({});
 
 	return (
