@@ -63,8 +63,8 @@ const Dashboard = () => {
 	  useEffect(() => {
 		const makeAPICall = async () => {
 		  try {
-			// const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers`);
-			const response = await axios(`http://localhost:4000/api/teachers`);
+			const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers`);
+			// const response = await axios(`http://localhost:4000/api/teachers`);
 			console.log("Response teachers: ", response);
 			setTeacherMatches(response.data);
 		  } catch (err) {
