@@ -1,49 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./Dashboard.css";
+import { DataContext } from '../../../App';
 
 const Dashboard = () => {
 
-	// const dataContext = useContext(activeUser);
-	const [ activeUser, setActiveUser ] = useState({});
+	const dataContext = useContext(DataContext);
+	const activeUser = dataContext.activeUser;
 	const [ studentMatches, setStudentMatches] = useState({})
 	const [ teacherMatches, setTeacherMatches] = useState({})
 
-
-
-	// console.log('student matches - ', studentMatches)
-	// console.log('matchesss - ', studentMatches[0].idiom)
-
-	// /// this is to test activeUser === teacher
-	// // it will be deleted once useContext is set up!
-	// useEffect(() => {
-	// 	const makeAPICall = async () => {
-	// 	  try {
-	// 		const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers/Adebayoer`);
-	// 		console.log("Response activeUser: ", response);
-	// 		setActiveUser(response.data);
-	// 	  } catch (err) {
-	// 		console.error(err);
-	// 	  }
-	// 	};
-	// 	makeAPICall();
-	//   }, []);
-
-	/// this is to test activeUser === student
-	// it will be deleted once useContext is set up!
-	useEffect(() => {
-		const makeAPICall = async () => {
-		  try {
-			const response = await axios(`https://p3-forte-backend.herokuapp.com/api/students/Dubrov`);
-			console.log("Response activeUser: ", response);
-			setActiveUser(response.data);
-		  } catch (err) {
-			console.error(err);
-		  }
-		};
-		makeAPICall();
-	  }, []);
 
 	  // this gets all the students for the teacher dash
 	  useEffect(() => {
@@ -79,9 +46,7 @@ const Dashboard = () => {
 	  // this returns the teacher dash
 	  if (activeUser[0] && studentMatches[0] && teacherMatches[0] !== undefined && activeUser[0].teacher === true) {
 	
-
-		console.log('testing activeuser - ', activeUser[0].teacher)
-
+		const email = '/profile/'+activeUser[0].email;
 		const userName = activeUser[0].firstName;
 		const idiomList = [activeUser[0].idiom1, activeUser[0].idiom2, activeUser[0].idiom3]
 
@@ -117,6 +82,8 @@ const Dashboard = () => {
 
 				<h2>Instruments</h2>
 				<h2>{idiomList.length}</h2>
+
+				<Link to={email} >View your profile</Link>
 			  </div>
 		  )
 	  } 
@@ -125,8 +92,7 @@ const Dashboard = () => {
 	  else if (activeUser[0] && studentMatches[0] && teacherMatches[0] !== undefined || null && activeUser.student === true) {
 
 		const userName = activeUser[0].firstName;
-
-		console.log('student')
+		const email = '/profile/'+activeUser[0].email;
 
 		let matchCounterStudent = 0
 		for (let i=0; i<teacherMatches.length; i++) {
@@ -138,7 +104,6 @@ const Dashboard = () => {
 				matchCounterStudent++
 			}
 		}
-
 
 		// students only ever have 1 or 0 instruments
 		let idiomCount = 0
@@ -159,6 +124,8 @@ const Dashboard = () => {
 
 				<h2>Instruments</h2>
 				<h2>{idiomCount}</h2>
+
+				<Link to={email} >View your profile</Link>
 		  </div>
 		  );
 	  } else { return <h1>Loading...</h1>}
