@@ -1,1 +1,10 @@
-//fix
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  text-align: center;
+}
+
+form input {
+  margin: 5px;
+}
