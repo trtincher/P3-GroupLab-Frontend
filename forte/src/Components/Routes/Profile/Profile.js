@@ -8,23 +8,23 @@ import apiUrl from '../../../apiConfig';
 const Profile = (props) => {
 
   const dataContext = useContext(DataContext);
-	const activeUser = dataContext.activeUser;
+  const activeUser = dataContext.activeUser;
+  console.log('active user - ', activeUser)
   const [ userProfile, setUserProfile ] = useState([]);
   const [ isUser, setIsUser ] = useState(false);
 
   let wholePath = props.location.pathname;
   let path = wholePath.split("").splice(9,wholePath.length-1).join("");
-  // console.log('path', path)
+  console.log('path', path)
 
 
     // this is to set userProfile
     useEffect(() => {
      const makeAPICall = async () => {
        try {
-         const response = await axios(`${apiUrl}/students/email/${path}`);
-        //  const response = await axios(`https://p3-forte-backend.herokuapp.com/api/students/Dubrov`);
+         const response = await axios(`${apiUrl}/teachers/email/${path}`);
          console.log("Response userProfile: ", response);
-         setUserProfile(response.data);
+         if (response !== undefined) setUserProfile(response.data)
        } catch (err) {
          console.error(err);
        }
@@ -32,30 +32,26 @@ const Profile = (props) => {
      makeAPICall();
       }, []);
 
+      useEffect(() => {
+        const makeAPICall = async () => {
+          try {
+            const response = await axios(`${apiUrl}/students/email/${path}`);
+            console.log("Response userProfile: ", response);
+            if (response !== undefined) setUserProfile(response.data)
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        makeAPICall();
+         }, []);
+
       console.log('apiUrl', apiUrl)
-      console.log('userProf - ', `${apiUrl}/students/email/${path}`)
+      console.log('userProf - ', `${apiUrl}/teachers/email/${path}`)
       console.log('user - ', userProfile)
-
-
-    // checking if you're on your profile or someone elses
-    useEffect(() => {
-      if(activeUser[0] !== undefined && path === activeUser[0].email) {
-        setIsUser(true);
-        // console.log(
-        //   'im in the if'
-        // )
-      }
-      console.log(isUser, 'isUser')
-    }, [activeUser[0]]);
-
-    console.log('activeuser from use effect', dataContext)
 
 
     if (userProfile[0] && activeUser[0] !== undefined) {
     
-
-
-
     const firstName = userProfile[0].firstName;
     const lastName = userProfile[0].lastName;
     const location = userProfile[0].location;
@@ -91,7 +87,7 @@ const Profile = (props) => {
 
         <h2>Contact</h2>
         <h2>{contact}</h2>
-        <Link to='/editprofile'>{isUser ? 'Edit Profile' : null}</Link>
+        <Link to='/editprofile'>{path === activeUser[0].email ? 'Edit Profile' : null}</Link>
 
       </div>
     )   

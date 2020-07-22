@@ -84,15 +84,12 @@ const Dashboard = () => {
 				<h2>{idiomList.length}</h2>
 
 				<Link to={email} >View your profile</Link>
-
-				{/* adding this because I need to test if you can see other profiles aside from the one you're logged into */}
-				<Link to='/profile/adubrov1248@gmail.com'>Dubrov the students email</Link>
 			  </div>
 		  )
 	  } 
 
 	  // this returns the student dash
-	  else if (activeUser[0] && studentMatches[0] && teacherMatches[0] !== undefined && activeUser.student === true) {
+	  else if (activeUser[0] && studentMatches[0] && teacherMatches[0] !== undefined || null && activeUser.student === true) {
 
 		const userName = activeUser[0].firstName;
 		const email = '/profile/'+activeUser[0].email;
@@ -129,9 +126,6 @@ const Dashboard = () => {
 				<h2>{idiomCount}</h2>
 
 				<Link to={email} >View your profile</Link>
-				
-				{/* adding this because I need to test if you can see other profiles aside from the one you're logged into */}
-				<Link to='/profile/adubrov1248@gmail.com'>Dubrov the students email</Link>
 		  </div>
 		  );
 	  } else { return <h1>Loading...</h1>}
