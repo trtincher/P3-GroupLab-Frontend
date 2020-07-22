@@ -6,7 +6,7 @@ import "./SignUp.css";
 export default function SignUp(props) {
   const [teacherStudent, setTeacherStudent] = useState("");
   const [teacherSubmitted, setTeacherSubmitted] = useState(false);
-  // const [studentSubmitted, setStudentSubmitted] = useState(false);
+  const [studentSubmitted, setStudentSubmitted] = useState(false);
 
   const [teacherInput, setTeacherInput] = useState({
     firstName: "",
@@ -22,19 +22,16 @@ export default function SignUp(props) {
     teacher: true,
   });
 
-  // const [studentInput, setStudentInput] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   idiom: "",
-  //   language: "",
-  //   location: "",
-  //   other: "",
-  //   student: true,
-  // });
-
-  const [teacher, setTeacher] = useState(null);
-  // const [student, setStudent] = useState(null);
+  const [studentInput, setStudentInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    idiom: "",
+    language: "",
+    location: "",
+    other: "",
+    student: true,
+  });
 
   const handleTeacherChange = (e) => {
     const field = e.target.value;
@@ -45,14 +42,14 @@ export default function SignUp(props) {
     });
   };
 
-  // const handleStudentChange = (e) => {
-  //   const field = e.target.value;
-  //   console.log("Field", field);
-  //   setStudentInput({
-  //     ...studentInput,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
+  const handleStudentChange = (e) => {
+    const field = e.target.value;
+    console.log("Field", field);
+    setStudentInput({
+      ...studentInput,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleTeacherSubmit = (e) => {
     e.preventDefault();
@@ -63,32 +60,30 @@ export default function SignUp(props) {
       data: teacherInput,
     })
       .then((res) => {
-        setTeacher({ createdTeacher: res.data.teacher });
-        props.history.push("/");
+        props.history.push("/login");
         console.log(res);
       })
       .catch(console.error);
   };
 
-  // const handleStudentSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("handle student submit");
-  //   axios({
-  //     url: "http://localhost:4000/api/students",
-  //     method: "POST",
-  //     data: studentInput,
-  //   })
-  //     .then((res) => {
-  //       setStudent({ createdStudent: res.data.student });
-  //       props.history.push("/");
-  //       console.log(res);
-  //     })
-  //     .catch(console.error);
-  // };
+  const handleStudentSubmit = (e) => {
+    e.preventDefault();
+    console.log("handle student submit");
+    axios({
+      url: "http://localhost:4000/api/students",
+      method: "POST",
+      data: studentInput,
+    })
+      .then((res) => {
+        props.history.push("/login");
+        console.log(res);
+      })
+      .catch(console.error);
+  };
 
-  if (teacherSubmitted) {
-    return <Redirect to="/login" />;
-  }
+  // if (teacherSubmitted) {
+  //   return <Redirect to="/login" />;
+  // }
   if (teacherStudent === "Teacher") {
     return (
       <>
@@ -159,7 +154,7 @@ export default function SignUp(props) {
             name="teachingStyle"
             value={teacherInput.teachingStyle}
           />
-          <input type="submit" onClick={() => setTeacherSubmitted(true)} />
+          <input type="submit" />
         </form>
         <button onClick={() => setTeacherStudent("")}>Back</button>
       </>
@@ -168,59 +163,59 @@ export default function SignUp(props) {
   // if (studentSubmitted) {
   //   return <Redirect to="/login" />;
   // }
-  // if (teacherStudent === "Student") {
-  //   return (
-  //     <>
-  //       <h3>Student Sign-Up</h3>
-  //       <form onSubmit={handleStudentSubmit}>
-  //         <label>First Name:</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="firstName"
-  //           value={studentInput.firstName}
-  //         />
-  //         <label>Last Name:</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="lastName"
-  //           value={studentInput.lastName}
-  //         />
-  //         <label>Email:</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="email"
-  //           value={studentInput.email}
-  //         />
-  //         <label>Instrument:</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="idiom"
-  //           value={studentInput.idiom}
-  //         />
-  //         <label>Language</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="language"
-  //           value={studentInput.language}
-  //         />
-  //         <label>Location:</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="location"
-  //           value={studentInput.location}
-  //         />
-  //         <label>Other:</label>
-  //         <input
-  //           onChange={handleStudentChange}
-  //           name="other"
-  //           value={studentInput.other}
-  //         />
-  //         <input type="submit" onClick={() => setStudentSubmitted(true)} />
-  //       </form>
-  //       <button onClick={() => setTeacherStudent("")}>Back</button>
-  //     </>
-  //   );
-  // }
+  if (teacherStudent === "Student") {
+    return (
+      <>
+        <h3>Student Sign-Up</h3>
+        <form onSubmit={handleStudentSubmit}>
+          <label>First Name:</label>
+          <input
+            onChange={handleStudentChange}
+            name="firstName"
+            value={studentInput.firstName}
+          />
+          <label>Last Name:</label>
+          <input
+            onChange={handleStudentChange}
+            name="lastName"
+            value={studentInput.lastName}
+          />
+          <label>Email:</label>
+          <input
+            onChange={handleStudentChange}
+            name="email"
+            value={studentInput.email}
+          />
+          <label>Instrument:</label>
+          <input
+            onChange={handleStudentChange}
+            name="idiom"
+            value={studentInput.idiom}
+          />
+          <label>Language</label>
+          <input
+            onChange={handleStudentChange}
+            name="language"
+            value={studentInput.language}
+          />
+          <label>Location:</label>
+          <input
+            onChange={handleStudentChange}
+            name="location"
+            value={studentInput.location}
+          />
+          <label>Other:</label>
+          <input
+            onChange={handleStudentChange}
+            name="other"
+            value={studentInput.other}
+          />
+          <input type="submit" />
+        </form>
+        <button onClick={() => setTeacherStudent("")}>Back</button>
+      </>
+    );
+  }
   if (teacherStudent === "") {
     return (
       <div>
