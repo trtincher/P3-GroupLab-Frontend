@@ -37,16 +37,23 @@ const Profile = (props) => {
       console.log('user - ', userProfile)
 
 
+    // checking if you're on your profile or someone elses
+    useEffect(() => {
+      if(activeUser[0] !== undefined && path === activeUser[0].email) {
+        setIsUser(true);
+        // console.log(
+        //   'im in the if'
+        // )
+      }
+      console.log(isUser, 'isUser')
+    }, [activeUser[0]]);
+
+    console.log('activeuser from use effect', dataContext)
 
 
     if (userProfile[0] && activeUser[0] !== undefined) {
     
 
-    // checking if you're on your profile or someone elses
-    if(path === activeUser[0].email) {
-      setIsUser(true);
-    }
-    console.log(isUser, 'isUser')
 
 
     const firstName = userProfile[0].firstName;

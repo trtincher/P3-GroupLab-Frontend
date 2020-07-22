@@ -92,7 +92,7 @@ const Dashboard = () => {
 	  } 
 
 	  // this returns the student dash
-	  else if (activeUser[0] && studentMatches[0] && teacherMatches[0] !== undefined || null && activeUser.student === true) {
+	  else if (activeUser[0] && studentMatches[0] && teacherMatches[0] !== undefined && activeUser.student === true) {
 
 		const userName = activeUser[0].firstName;
 		const email = '/profile/'+activeUser[0].email;
