@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./Profile.css";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
   // const dataContext = useContext(activeUser);
   const [ activeUser, setActiveUser ] = useState([]);
@@ -15,6 +15,7 @@ const Dashboard = () => {
   //   // const lastName = activeUser[0].lastName;
   // } 
   
+  console.log('whole path -', wholePath);
   let wholePath = props.location.pathname;
   // haha I think I just spent too much time I might not even need on this. if the path is /email/:email then whole path can be used in the API call instead of path
   let path = wholePath.split("").splice(9,wholePath.length-1).join("");
