@@ -5,7 +5,7 @@ import "./Profile.css";
 import { DataContext } from '../../../App';
 import apiUrl from '../../../apiConfig';
 
-const Dashboard = (props) => {
+const Profile = (props) => {
 
   const dataContext = useContext(DataContext);
 	const activeUser = dataContext.activeUser;
@@ -39,8 +39,6 @@ const Dashboard = (props) => {
 
 
 
-
-
     if (userProfile[0] && activeUser[0] !== undefined) {
     
 
@@ -50,14 +48,16 @@ const Dashboard = (props) => {
     }
     console.log(isUser, 'isUser')
 
+
     const firstName = userProfile[0].firstName;
     const lastName = userProfile[0].lastName;
     const location = userProfile[0].location;
     const rate = userProfile[0].rate;
     const lang = userProfile[0].language;
     const contact = userProfile[0].email;
+    const idiom = userProfile[0].idiom;
     const idiomList = [userProfile[0].idiom1, userProfile[0].idiom2, userProfile[0].idiom3]
-
+    
     idiomList.forEach( (element,i) => {
         if(element === "") {
             idiomList.splice(i,1)
@@ -69,91 +69,26 @@ const Dashboard = (props) => {
       <div>
         <h1>{firstName} {lastName}</h1>
         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
+
         <h2>Location</h2>
         <h2>{location}</h2>
-        {/* <h2>Price/hr</h2>
-        <h2>{rate}</h2> */}
+
+        <h2>{userProfile[0].teacher === true ? 'Price/hr' : null}</h2>
+        <h2>{userProfile[0].teacher === true ? rate : null}</h2>
 
         <h2>Instruments</h2>
-        {/* <h2>{idiomList.join(', ')}</h2> */}
+        <h2>{userProfile[0].student === true ? idiom : idiomList.join(', ')}</h2>
+
         <h2>Language</h2>
         <h2>{lang}</h2>
+
         <h2>Contact</h2>
         <h2>{contact}</h2>
-        {/* <Link to='/editprofile'>{ isUser ? 'Edit Profile' : }</Link> */}
+        <Link to='/editprofile'>{isUser ? 'Edit Profile' : null}</Link>
 
       </div>
     )   
   } else {return <h1>Loading...</h1>}
-
-
-
-
-
-  // if (userProfile[0] !== undefined && userProfile[0].teacher === true) {
-  //   const firstName = userProfile[0].firstName;
-  //   const lastName = userProfile[0].lastName;
-  //   const location = userProfile[0].location;
-  //   const rate = userProfile[0].rate;
-  //   const lang = userProfile[0].language;
-  //   const contact = userProfile[0].email;
-  //   const idiomList = [userProfile[0].idiom1, userProfile[0].idiom2, userProfile[0].idiom3]
-
-  //   idiomList.forEach( (element,i) => {
-  //       if(element === "") {
-  //           idiomList.splice(i,1)
-  //       } 
-  //   });
-
-
-  //   return (
-  //     <div>
-  //       <h1>profile for teacher</h1>
-  //       <h1>{firstName} {lastName}</h1>
-  //       {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
-  //       <h2>Location</h2>
-  //       <h2>{location}</h2>
-  //       <h2>Price/hr</h2>
-  //       <h2>{rate}</h2>
-
-  //       <h2>Instruments</h2>
-  //       <h2>{idiomList.join(', ')}</h2>
-  //       <h2>Language</h2>
-  //       <h2>{lang}</h2>
-  //       <h2>Contact</h2>
-  //       <h2>{contact}</h2>
-  //       {/* <Link to='/editprofile'>{isUser ? Edit profile : }</Link> */}
-
-  //     </div>
-  //   )   
-  // } 
-  //   else if (userProfile[0] !== undefined && userProfile[0].student === true) {
-  //     const firstName = userProfile[0].firstName;
-  //     const lastName = userProfile[0].lastName;
-  //     const location = userProfile[0].location;
-  //     const idiom = userProfile[0].idiom;
-  //     const lang = userProfile[0].language;
-  //     const contact = userProfile[0].email;
-  
-  //     return (
-  //       <div>
-  //         <h1>profile for student</h1>
-  //         <h1>{firstName} {lastName}</h1>
-  //         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
-  //         <h2>Location</h2>
-  //         <h2>{location}</h2>
-  //         <h2>Instrument</h2>
-  //         <h2>{idiom}</h2>
-  //         <h2>Language</h2>
-  //         <h2>{lang}</h2>
-  //         <h2>Contact</h2>
-  //         <h2>{contact}</h2>
-  
-  //       </div>
-  //     )   
-  // } else {return <h1>Loading...</h1>}
-
-
 }
 
-export default Dashboard
+export default Profile
