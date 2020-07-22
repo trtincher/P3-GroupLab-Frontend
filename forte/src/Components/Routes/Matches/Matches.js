@@ -41,7 +41,7 @@ export default function Matches() {
   useEffect(() => {
     const makeAPICall = async () => {
       try {
-        const response = await axios(`${apiUrl}/teachers/Silverfish`);
+        const response = await axios(`${apiUrl}/students/Robinson`);
         setActiveUser(response.data[0]);
         if (response.data[0].teacher === true) {
           setThisIsaTeacher(true);
@@ -73,16 +73,28 @@ export default function Matches() {
           let url = `/profile/${match.email}`;
           return (
             <Link to={url}>
-              <h4>
-                {match.firstName} {match.lastName}
-              </h4>
+              <div className="connection-card">
+                <h4>
+                  {match.firstName} {match.lastName}
+                </h4>
+                <h5>Location</h5>
+                <p>{match.location}</p>
+                <h5>Instrument(s)</h5>
+                <ul>
+                  <li>{match.idiom1}</li>
+                  <li>{match.idiom2}</li>
+                  <li>{match.idiom3}</li>
+                </ul>
+                <h5>Teaching Style</h5>
+                <p>{match.teachingStyle}</p>
+              </div>
             </Link>
           );
         })}
       </div>
     );
   } else {
-        // if a teacher, find all students who match an idiom
+    // if a teacher, find all students who match an idiom
     let matches = allStudents.filter((student) => {
       return (
         activeUser.idiom1 === student.idiom ||
@@ -98,9 +110,17 @@ export default function Matches() {
           let url = `/profile/${match.email}`;
           return (
             <Link to={url}>
-              <h4>
-                {match.firstName} {match.lastName}
-              </h4>
+              <div className="connection-card">
+                <h4>
+                  {match.firstName} {match.lastName}
+                </h4>
+                <h5>Location</h5>
+                <p>{match.location}</p>
+                <h5>Instrument</h5>
+                <p>{match.idiom}</p>
+                <h5>Other</h5>
+                <p>{match.other}</p>
+              </div>
             </Link>
           );
         })}
