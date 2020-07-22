@@ -1,32 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./Profile.css";
+import { DataContext } from '../../../App';
+import apiUrl from '../../../apiConfig';
 
 const Dashboard = (props) => {
 
-  // const dataContext = useContext(activeUser);
-  const [ activeUser, setActiveUser ] = useState([]);
+  const dataContext = useContext(DataContext);
+	const activeUser = dataContext.activeUser;
   const [ userProfile, setUserProfile ] = useState([]);
   const [ isUser, setIsUser ] = useState(false);
 
-  // if (activeUser.email === undefined) {
-  //   const firstName = activeUser[0].firstName;
-  //   // const lastName = activeUser[0].lastName;
-  // } 
-  
-  console.log('whole path -', wholePath);
   let wholePath = props.location.pathname;
-  // haha I think I just spent too much time I might not even need on this. if the path is /email/:email then whole path can be used in the API call instead of path
   let path = wholePath.split("").splice(9,wholePath.length-1).join("");
-  
+  // console.log('path', path)
 
-    /// this is to test userProfile === teacher
-    // it will be deleted once useContext is set up!
+
+    // this is to set userProfile
     useEffect(() => {
      const makeAPICall = async () => {
        try {
-         const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers/email${path}`);
+         const response = await axios(`${apiUrl}/students/email/${path}`);
         //  const response = await axios(`https://p3-forte-backend.herokuapp.com/api/students/Dubrov`);
          console.log("Response userProfile: ", response);
          setUserProfile(response.data);
@@ -37,20 +32,10 @@ const Dashboard = (props) => {
      makeAPICall();
       }, []);
 
+      console.log('apiUrl', apiUrl)
+      console.log('userProf - ', `${apiUrl}/students/email/${path}`)
+      console.log('user - ', userProfile)
 
-      useEffect(() => {
-        const makeAPICall = async () => {
-          try {
-           //  const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers/email${rjfdklajfklads}`);
-            const response = await axios(`https://p3-forte-backend.herokuapp.com/api/students/Dubrov`);
-            console.log("Response userProfile: ", response);
-            setActiveUser(response.data);
-          } catch (err) {
-            console.error(err);
-          }
-        };
-        makeAPICall();
-         }, []);
 
 
 
@@ -59,11 +44,11 @@ const Dashboard = (props) => {
     if (userProfile[0] && activeUser[0] !== undefined) {
     
 
-      // if(userProfile[0].email === activeUser[0].email) {
-      //   setIsUser(true);
-      // }
-
-      // console.log(isUser, 'isUser')
+    // checking if you're on your profile or someone elses
+    if(path === activeUser[0].email) {
+      setIsUser(true);
+    }
+    console.log(isUser, 'isUser')
 
     const firstName = userProfile[0].firstName;
     const lastName = userProfile[0].lastName;
