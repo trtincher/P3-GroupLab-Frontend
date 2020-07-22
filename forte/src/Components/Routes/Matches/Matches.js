@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import ProfileCard from "../ProfileCard/ProfileCard";
+import ProfileCard from "../ProfileCard/ProfileCard";
 import apiUrl from "../../../apiConfig";
 
 export default function Matches() {
@@ -41,7 +41,7 @@ export default function Matches() {
   useEffect(() => {
     const makeAPICall = async () => {
       try {
-        const response = await axios(`${apiUrl}/students/Robinson`);
+        const response = await axios(`${apiUrl}/teachers/Silverfish`);
         setActiveUser(response.data[0]);
         if (response.data[0].teacher === true) {
           setThisIsaTeacher(true);
@@ -73,21 +73,7 @@ export default function Matches() {
           let url = `/profile/${match.email}`;
           return (
             <Link to={url}>
-              <div className="connection-card">
-                <h4>
-                  {match.firstName} {match.lastName}
-                </h4>
-                <h5>Location</h5>
-                <p>{match.location}</p>
-                <h5>Instrument(s)</h5>
-                <ul>
-                  <li>{match.idiom1}</li>
-                  <li>{match.idiom2}</li>
-                  <li>{match.idiom3}</li>
-                </ul>
-                <h5>Teaching Style</h5>
-                <p>{match.teachingStyle}</p>
-              </div>
+              <ProfileCard key={match._id} person={match} />
             </Link>
           );
         })}
@@ -102,7 +88,6 @@ export default function Matches() {
         activeUser.idiom3 === student.idiom
       );
     });
-    console.log(matches);
     return (
       <div className="matches">
         <h3>Teacher's matches</h3>
@@ -110,17 +95,7 @@ export default function Matches() {
           let url = `/profile/${match.email}`;
           return (
             <Link to={url}>
-              <div className="connection-card">
-                <h4>
-                  {match.firstName} {match.lastName}
-                </h4>
-                <h5>Location</h5>
-                <p>{match.location}</p>
-                <h5>Instrument</h5>
-                <p>{match.idiom}</p>
-                <h5>Other</h5>
-                <p>{match.other}</p>
-              </div>
+              <ProfileCard key={match._id} person={match} />
             </Link>
           );
         })}

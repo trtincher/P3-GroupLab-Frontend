@@ -1,48 +1,36 @@
 import React from "react";
 
-const ProfileCard = ({ activeUser }) => {
-  if (activeUser !== undefined && activeUser.student === false) {
+const ProfileCard = ({ person }) => {
+  if (person !== undefined && person.student === true) {
     return (
-      <div className="connection-wrapper">
-        {activeUser.studentRoster.map((student) => {
-          return (
-            <div className="connection-card">
-              <h4>
-                {student.firstName} {student.lastName}
-              </h4>
-              <h5>Location</h5>
-              <p>{student.location}</p>
-              <h5>Instrument</h5>
-              <p>{student.idiom}</p>
-              <h5>Other</h5>
-              <p>{student.other}</p>
-            </div>
-          );
-        })}
+      <div className="connection-card">
+        <h4>
+          {person.firstName} {person.lastName}
+        </h4>
+        <h5>Location</h5>
+        <p>{person.location}</p>
+        <h5>Instrument</h5>
+        <p>{person.idiom}</p>
+        <h5>Other</h5>
+        <p>{person.other}</p>
       </div>
     );
-  } else if (activeUser !== undefined && activeUser.student === true) {
+  } else if (person !== undefined && person.student === false) {
     return (
-      <div className="connection-wrapper">
-        {activeUser.myTeachers.map((teacher) => {
-          return (
-            <div className="connection-card">
-              <h4>
-                {teacher.firstName} {teacher.lastName}
-              </h4>
-              <h5>Location</h5>
-              <p>{teacher.location}</p>
-              <h5>Instrument(s)</h5>
-              <ul>
-                <li>{teacher.idiom1}</li>
-                <li>{teacher.idiom2}</li>
-                <li>{teacher.idiom3}</li>
-              </ul>
-              <h5>Teaching Style</h5>
-              <p>{teacher.teachingStyle}</p>
-            </div>
-          );
-        })}
+      <div className="connection-card">
+        <h4>
+          {person.firstName} {person.lastName}
+        </h4>
+        <h5>Location</h5>
+        <p>{person.location}</p>
+        <h5>Instrument(s)</h5>
+        <ul>
+          <li>{person.idiom1}</li>
+          <li>{person.idiom2}</li>
+          <li>{person.idiom3}</li>
+        </ul>
+        <h5>Teaching Style</h5>
+        <p>{person.teachingStyle}</p>
       </div>
     );
   } else {

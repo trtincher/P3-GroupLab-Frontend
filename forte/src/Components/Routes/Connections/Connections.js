@@ -11,9 +11,7 @@ export default function Connections() {
   useEffect(() => {
     const makeAPICall = async () => {
       try {
-        const response = await axios(
-          `${apiUrl}/teachers/Ferguson`
-        );
+        const response = await axios(`${apiUrl}/students/Robinson`);
         setActiveUser(response.data[0]);
         if (response.data[0].teacher === true) {
           setThisIsaTeacher(true);
@@ -25,18 +23,20 @@ export default function Connections() {
     makeAPICall();
   }, []);
 
-  // activeUser.firstName ? console.log(activeUser.firstName) : console.log("nothing yet");
-
-  if (activeUser === undefined) {
-    console.log("waiting for data")
-    return <p>No activeUser yet</p>
+  if (activeUser.firstName === undefined) {
+    console.log("waiting for data");
+    return <p>No activeUser yet</p>;
   } else if (thisIsaTeacher === false) {
     return (
       <div className="connections">
         <h1>
           {activeUser.firstName} {activeUser.lastName}'s Teachers
         </h1>
-        <ProfileCard activeUser={activeUser}/>
+        <div className="connection-wrapper">
+          {activeUser.myTeachers.map((teacher) => (
+            <ProfileCard key={teacher._id} person={teacher} />
+          ))}
+        </div>
       </div>
     );
   } else {
@@ -45,7 +45,11 @@ export default function Connections() {
         <h1>
           {activeUser.firstName} {activeUser.lastName}'s Students
         </h1>
-        <ProfileCard activeUser={activeUser} />
+        <div className="connection-wrapper">
+          {activeUser.studentRoster.map((student) => (
+            <ProfileCard key={student._id} person={student} />
+          ))}
+        </div>
       </div>
     );
   }
