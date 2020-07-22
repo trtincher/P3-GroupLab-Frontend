@@ -33,7 +33,7 @@ const App = () => {
         <Route exact path="/deleteProfile" component={DeleteProfile} />
         <Route exact path="/editProfile" component={EditProfile} />
         <Route exact path="/connections" component={Connections} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:email" component={Profile} />
         <Route exact path="/matches" component={Matches} />
         <Route exact path="/dashboard">
           {activeUser.length > 0 ? <Dashboard /> : <Redirect to="/login" />}
