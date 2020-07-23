@@ -47,7 +47,7 @@ const DeleteProfile = () => {
         <h1>This will be permanent.</h1>
         <button onClick={deleteOnClick} >Delete Profile</button>
         <Link to='/editprofile'>
-          <button>Cancle</button>
+          <button>Cancel</button>
         </Link>
       </div>
     )
