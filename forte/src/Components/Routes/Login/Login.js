@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { DataContext } from "../../../App";
+import apiUrl from '../../../apiConfig';
 import axios from "axios";
 import "./Login.css";
 
@@ -19,7 +20,7 @@ export default function Login() {
     const getStudent = async () => {
       try {
         const response = await axios(
-          `http://localhost:4000/api/students/email/${input}`
+          `${apiUrl}/students/email/${input}`
         );
         if (response.data[0]) {
           setActiveUser(response.data);
@@ -34,7 +35,7 @@ export default function Login() {
     const getTeacher = async () => {
       try {
         const response = await axios(
-          `http://localhost:4000/api/teachers/email/${input}`
+          `${apiUrl}/teachers/email/${input}`
         );
         console.log("Response activeUser: ", response);
         if (response.data[0]) {
