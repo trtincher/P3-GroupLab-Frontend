@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const ProfileCard = ({ person }) => {
   if (person !== undefined && person.student === true) {
     return (
@@ -31,6 +32,7 @@ const ProfileCard = ({ person }) => {
         </ul>
         <h5>Teaching Style</h5>
         <p>{person.teachingStyle}</p>
+
       </div>
     );
   } else {
