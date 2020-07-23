@@ -15,7 +15,7 @@ const DeleteProfile = () => {
 
     // console.log('id', activeUser[0]._id)
       
-    const destroy = async () => {
+    const deleteOnClick = async () => {
 
       if (activeUser[0].student === true) {
         let userId = activeUser[0]._id
@@ -47,7 +47,7 @@ const DeleteProfile = () => {
       <div>
         <h1>Are you sure you want to delete?</h1>
         <h1>This will be permanent.</h1>
-        <button onClick={destroy} >Delete Profile</button>
+        <button onClick={deleteOnClick} >Delete Profile</button>
         <Link to='/editprofile'>
           <button>Cancle</button>
         </Link>
