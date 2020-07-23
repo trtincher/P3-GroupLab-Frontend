@@ -10,10 +10,8 @@ const DeleteProfile = () => {
   const activeUser = dataContext.activeUser;
   const [ isDeleted, setIsDeleted ] = useState(false);
 
-  console.log('is click? - ', isDeleted)
-  if (activeUser[0]) {
 
-    // console.log('id', activeUser[0]._id)
+  if (activeUser[0]) {
       
     const deleteOnClick = async () => {
 
@@ -40,7 +38,7 @@ const DeleteProfile = () => {
 
     if (isDeleted === true) {
       return <Redirect to={'/'}/>
-  }
+    }
 
 
     return (
