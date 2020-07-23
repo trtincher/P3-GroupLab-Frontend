@@ -96,7 +96,7 @@ const EditProfile = (props) => {
     console.log("handle student submit");
     axios({
       url: `${apiUrl}/students/${activeUser[0]._id}`,
-      method: "POST",
+      method: "PUT",
       data: studentInput,
     })
       .then(() => setIsStudentUpdated(true))
@@ -106,12 +106,14 @@ const EditProfile = (props) => {
 if(isTeacherUpdated){
   axios({url: `${apiUrl}/teachers/email/${activeUser[0].email}`})
     .then((res) => setActiveUser(res.data))
-    .catch(console.error);
+    .then(()=> setIsTeacherUpdated(false))
+    .catch(console.error) 
 } 
 
 if(isStudentUpdated){
   axios({url: `${apiUrl}/students/email/${activeUser[0].email}`})
     .then((res) => setActiveUser(res.data))
+    .then(()=> setIsStudentUpdated(false))
     .catch(console.error);
 } 
 
