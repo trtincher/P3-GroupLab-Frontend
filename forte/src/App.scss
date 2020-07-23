@@ -1,0 +1,21 @@
+// Color Palette
+
+$masterBackground: rgb(196, 222, 234);
+$masterTextColor: white;
+$masterTextShadow: 2px 2px 2px black;
+
+// Mixins
+
+// Button Mixin
+
+@mixin button-mixin {
+  width: 90px;
+  height: 40px;
+  margin: 10px;
+  border: 2px solid white;
+  background-color: lightgray;
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
+  text-shadow: $masterTextShadow;
+}

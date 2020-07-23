@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Nav.css";
+import "./Nav.scss";
 
 export default function Nav() {
   // State to open and close the mobile nav
@@ -8,14 +8,28 @@ export default function Nav() {
 
   return (
     <div id="headerNav">
-      <h1>Forte</h1>
       <nav id="deskNav">
         <div id="burger-menu">
+          <div id="burger">
+            <h1>Forte</h1>
+            <div id="burger-span" onClick={() => setOpen(!open)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
           <ul id={open ? "open" : "closed-burger-menu-list"}>
             <li className="burger-menu-item">
               <Link
                 to="/"
-                style={{ textDecoration: "none" }}
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "40px",
+                }}
                 onClick={() => setOpen(!open)}
               >
                 Home
@@ -24,7 +38,14 @@ export default function Nav() {
             <li className="burger-menu-item">
               <Link
                 to="/about"
-                style={{ textDecoration: "none" }}
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "40px",
+                }}
                 onClick={() => setOpen(!open)}
               >
                 About
@@ -33,7 +54,14 @@ export default function Nav() {
             <li className="burger-menu-item">
               <Link
                 to="/meetTheTeam"
-                style={{ textDecoration: "none" }}
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "40px",
+                }}
                 onClick={() => setOpen(!open)}
               >
                 Meet the Team
@@ -42,7 +70,14 @@ export default function Nav() {
             <li className="burger-menu-item">
               <Link
                 to="/dashboard"
-                style={{ textDecoration: "none" }}
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "40px",
+                }}
                 onClick={() => setOpen(!open)}
               >
                 Dashboard
@@ -51,7 +86,14 @@ export default function Nav() {
             <li className="burger-menu-item">
               <Link
                 to="/signup"
-                style={{ textDecoration: "none" }}
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "40px",
+                }}
                 onClick={() => setOpen(!open)}
               >
                 Sign Up
@@ -60,7 +102,14 @@ export default function Nav() {
             <li className="burger-menu-item">
               <Link
                 to="/login"
-                style={{ textDecoration: "none" }}
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "40px",
+                }}
                 onClick={() => setOpen(!open)}
               >
                 Login
@@ -68,45 +117,101 @@ export default function Nav() {
             </li>
           </ul>
         </div>
-        <div id="burger">
-          <div id="burger-span" onClick={() => setOpen(!open)}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div id="desk-menu">
+          <h1>Forte</h1>
+          <ul id="desk-ul">
+            <li>
+              <Link
+                to="/"
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "20px",
+                }}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "20px",
+                }}
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/meetTheTeam"
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "20px",
+                }}
+              >
+                Meet the Team
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard"
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "20px",
+                }}
+              >
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/signup"
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "20px",
+                }}
+              >
+                Sign Up
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/login"
+                style={{
+                  fontFamily: "helvetica, sans-serif",
+                  textDecoration: "none",
+                  color: "white",
+                  textDecoration: "none",
+                  marginTop: "15px",
+                  fontSize: "20px",
+                }}
+              >
+                Login
+              </Link>
+            </li>
+          </ul>
         </div>
-        <ul id="desk-ul">
-          <li>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" style={{ textDecoration: "none" }}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/meetTheTeam" style={{ textDecoration: "none" }}>
-              Meet the Team
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard" style={{ textDecoration: "none" }}>
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              Sign Up
-            </Link>
-          </li>
-          <li>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Login
-            </Link>
-          </li>
-        </ul>
       </nav>
     </div>
   );

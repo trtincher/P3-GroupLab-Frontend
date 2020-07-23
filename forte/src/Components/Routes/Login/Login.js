@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { DataContext } from "../../../App";
 import axios from "axios";
-import "./Login.css";
+import "./Login.scss";
 
 export default function Login() {
   const { activeUser, setActiveUser } = useContext(DataContext);
@@ -58,7 +58,7 @@ export default function Login() {
   console.log(activeUser);
 
   return (
-    <div>
+    <div id="login-wrapper">
       <h2>Login</h2>
       <h3>{invalidEntry}</h3>
       <form onSubmit={handleSubmit}>
