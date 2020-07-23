@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { DataContext } from "../../../App";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import apiUrl from "../../../apiConfig";
 
 export default function Matches() {
-  // const dataContext = useContext(activeUser);
-  const [activeUser, setActiveUser] = useState({});
-  const [thisIsaTeacher, setThisIsaTeacher] = useState(false);
+  const dataContext = useContext(DataContext);
+  const activeUser = dataContext.activeUser[0];
   const [allTeachers, setAllTeachers] = useState([]);
   const [allStudents, setAllStudents] = useState([]);
 
@@ -37,26 +37,10 @@ export default function Matches() {
     makeAPICall();
   }, []);
 
-  // set the active user (eventually we'll get this from state)
-  useEffect(() => {
-    const makeAPICall = async () => {
-      try {
-        const response = await axios(`${apiUrl}/teachers/Silverfish`);
-        setActiveUser(response.data[0]);
-        if (response.data[0].teacher === true) {
-          setThisIsaTeacher(true);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    makeAPICall();
-  }, []);
-
   if (activeUser === undefined) {
     console.log("waiting for data");
     return <p>No activeUser yet</p>;
-  } else if (thisIsaTeacher === false) {
+  } else if (activeUser.teacher === false) {
     // if a student, find all teachers who match instrument
     let matches = allTeachers.filter((teacher) => {
       return (
