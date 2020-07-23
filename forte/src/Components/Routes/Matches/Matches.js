@@ -56,7 +56,7 @@ export default function Matches() {
         {matches.map((match) => {
           let url = `/profile/${match.email}`;
           return (
-            <Link to={url}>
+            <Link key={match._id} to={url}>
               <ProfileCard key={match._id} person={match} />
             </Link>
           );

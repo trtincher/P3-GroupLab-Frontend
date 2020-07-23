@@ -12,7 +12,6 @@ export default function Login() {
 
   const handleChange = (e) => {
     const email = e.target.value;
-    console.log("Event", email);
     setInput(email);
   };
 
@@ -53,7 +52,7 @@ export default function Login() {
     getTeacher();
   };
 
-  console.log(activeUser);
+  // console.log(activeUser);
 
   if (activeUser.length > 0) {
     return <Redirect to="/dashboard" />;
