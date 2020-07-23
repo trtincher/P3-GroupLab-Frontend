@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ProfileCard from "../ProfileCard/ProfileCard";
 
 export default function Connections() {
   // const dataContext = useContext(activeUser);
@@ -10,7 +11,7 @@ export default function Connections() {
     const makeAPICall = async () => {
       try {
         const response = await axios(
-          `http://localhost:4000/api/teachers/Adebayoer`
+          `http://localhost:4000/api/students/Dubrov`
         );
         setActiveUser(response.data[0]);
         if (response.data[0].teacher === true) {
@@ -22,10 +23,19 @@ export default function Connections() {
     };
     makeAPICall();
   }, []);
-  if (thisIsaTeacher === false) {
+
+  // activeUser.firstName ? console.log(activeUser.firstName) : console.log("nothing yet");
+
+  if (activeUser === undefined) {
+    console.log("waiting for data")
+    return <p>No activeUser yet</p>
+  } else if (thisIsaTeacher === false) {
     return (
       <div className="connections">
-        <h1>{activeUser.firstName} {activeUser.lastName}'s Teachers</h1>
+        <h1>
+          {activeUser.firstName} {activeUser.lastName}'s Teachers
+        </h1>
+        <ProfileCard />
         {activeUser.myTeachers ? (
           activeUser.myTeachers.map((teacher) => {
             return (
@@ -47,34 +57,18 @@ export default function Connections() {
             );
           })
         ) : (
-            <li>nothing yet</li>
-          )}
+          <li>nothing yet</li>
+        )}
       </div>
     );
   } else {
     return (
       <div className="connections">
-        <h1>{activeUser.firstName} {activeUser.lastName}'s Students</h1>
-        {activeUser.studentRoster ? (
-          activeUser.studentRoster.map((student) => {
-            return (
-              <div className="connection-card">
-                <h3>
-                  {student.firstName} {student.lastName}
-                </h3>
-                <h4>Location</h4>
-                <p>{student.location}</p>
-                <h4>Instrument/Discipline</h4>
-                <ul>
-                  <li>{student.idiom}</li>
-                </ul>
-              </div>
-            );
-          })
-        ) : (
-            <li>nothing yet</li>
-          )}
+        <h1>
+          {activeUser.firstName} {activeUser.lastName}'s Students
+        </h1>
+        <ProfileCard activeUser={activeUser} />
       </div>
-    )
+    );
   }
 }
