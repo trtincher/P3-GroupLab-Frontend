@@ -23,7 +23,7 @@ const Profile = (props) => {
      const makeAPICall = async () => {
        try {
          const response = await axios(`${apiUrl}/teachers/email/${path}`);
-         console.log("Response userProfile: ", response);
+        //  console.log("Response userProfile: ", response);
          if (response !== undefined) setUserProfile(response.data)
        } catch (err) {
          console.error(err);
@@ -36,7 +36,7 @@ const Profile = (props) => {
         const makeAPICall = async () => {
           try {
             const response = await axios(`${apiUrl}/students/email/${path}`);
-            console.log("Response userProfile: ", response);
+            // console.log("Response userProfile: ", response);
             if (response !== undefined) setUserProfile(response.data)
           } catch (err) {
             console.error(err);
