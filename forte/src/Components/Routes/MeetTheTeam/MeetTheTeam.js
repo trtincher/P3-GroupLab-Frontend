@@ -5,7 +5,7 @@ export default function MeetTheTeam() {
     <div>
       <h2>Meet the Forte Team</h2>
       <h3>Allie</h3>
-      <img href="https://i.imgur.com/yHhs4Vx.jpg" alt="Allie P." />
+      <img src="https://i.imgur.com/yHhs4Vx.jpg" alt="Allie P." />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -18,7 +18,7 @@ export default function MeetTheTeam() {
 
       <h3>James</h3>
       <img
-        href="https://res.cloudinary.com/tylerdavisfilms/image/upload/v1595278302/SEIR%20Project%203/James_Hall_Bill_Wadman_Photo_pugma2.jpg"
+        src="https://res.cloudinary.com/tylerdavisfilms/image/upload/v1595278302/SEIR%20Project%203/James_Hall_Bill_Wadman_Photo_pugma2.jpg"
         alt="James H."
       />
       <p>
@@ -32,7 +32,10 @@ export default function MeetTheTeam() {
       </p>
 
       <h3>Travis</h3>
-      <img href="https://i.imgur.com/23WAyRN.png" alt="Travis T." />
+      <img
+        src="https://res.cloudinary.com/dugmhtotn/image/upload/v1595356277/390149_10150571185433982_1621736946_n.jpg_f3s9by.jpg"
+        alt="Travis T."
+      />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -45,7 +48,7 @@ export default function MeetTheTeam() {
 
       <h3>Tyler</h3>
       <img
-        href="https://res.cloudinary.com/tylerdavisfilms/image/upload/v1591891578/Project%201%20Images/Promo_Pic_mzq3nw.jpg"
+        src="https://res.cloudinary.com/tylerdavisfilms/image/upload/v1591891578/Project%201%20Images/Promo_Pic_mzq3nw.jpg"
         alt="Tyler D."
       />
       <p>
