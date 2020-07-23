@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import "./EditProfile.css";
 import { DataContext } from '../../../App';
@@ -16,9 +16,8 @@ const EditProfile = () => {
 
   return (
     <div>
-      <div>
-        <h1>{ clickedDelete ? 'You clicked delete!?!' : null}</h1>
-      </div>
+      { clickedDelete ? <Redirect to='/deleteprofile' /> : null}
+      
       <button type='button' onClick={showDiv} >Delete Profile</button>
     </div>
   )
