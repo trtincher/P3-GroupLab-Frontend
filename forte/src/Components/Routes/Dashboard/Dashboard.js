@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./Dashboard.css";
 import { DataContext } from '../../../App';
+import apiUrl from '../../../apiConfig';
 
 const Dashboard = () => {
 
@@ -16,7 +17,7 @@ const Dashboard = () => {
 	  useEffect(() => {
 		const makeAPICall = async () => {
 		  try {
-			const response = await axios(`https://p3-forte-backend.herokuapp.com/api/students`);
+			const response = await axios(`${apiUrl}/students`);
 			console.log("Response students: ", response);
 			setStudentMatches(response.data);
 		  } catch (err) {
@@ -30,8 +31,7 @@ const Dashboard = () => {
 	  useEffect(() => {
 		const makeAPICall = async () => {
 		  try {
-			const response = await axios(`https://p3-forte-backend.herokuapp.com/api/teachers`);
-			// const response = await axios(`http://localhost:4000/api/teachers`);
+			const response = await axios(`${apiUrl}/teachers`);
 			console.log("Response teachers: ", response);
 			setTeacherMatches(response.data);
 		  } catch (err) {
