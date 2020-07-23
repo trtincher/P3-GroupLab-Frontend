@@ -28,11 +28,11 @@ const DeleteProfile = () => {
       }
 
       if (activeUser[0].teacher === true) {
-        // let userId = activeUser[0]._id
-        // const response = await axios({
-        //   url: `${apiUrl}/teachers/${userId}`,
-        //   method: 'DELETE'
-        // })
+        let userId = activeUser[0]._id
+        const response = await axios({
+          url: `${apiUrl}/teachers/${userId}`,
+          method: 'DELETE'
+        })
         setIsDeleted(true);
         console.log('is click? ', isDeleted)
       }
