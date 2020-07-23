@@ -11,7 +11,8 @@ const EditProfile = (props) => {
   const dataContext = useContext(DataContext);
   const activeUser = dataContext.activeUser;
   const setActiveUser = dataContext.setActiveUser;
-  // const [isUpdated, setIsUpdated] = useState(false);
+  const [isStudentUpdated, setIsStudentUpdated] = useState(false);
+  const [isTeacherUpdated, setIsTeacherUpdated] = useState(false);
 
   // console.log('setactive', setActiveUser)
   // const { activeUser, setActiveUser } = useContext(DataContext);
@@ -85,8 +86,9 @@ const EditProfile = (props) => {
       method: "PUT",
       data: teacherInput,
     })
-      // .then(() => setIsUpdated(true))
+      .then(() => setIsTeacherUpdated(true))
       .catch(console.error);
+    
   };
 
   const handleStudentSubmit = (e) => {
@@ -97,11 +99,21 @@ const EditProfile = (props) => {
       method: "POST",
       data: studentInput,
     })
-      // .then(() => setIsUpdated(true))
+      .then(() => setIsStudentUpdated(true))
       .catch(console.error);
   };
 
+if(isTeacherUpdated){
+  axios({url: `${apiUrl}/teachers/email/${activeUser[0].email}`})
+    .then((res) => setActiveUser(res.data))
+    .catch(console.error);
+} 
 
+if(isStudentUpdated){
+  axios({url: `${apiUrl}/students/email/${activeUser[0].email}`})
+    .then((res) => setActiveUser(res.data))
+    .catch(console.error);
+} 
 
 
 
