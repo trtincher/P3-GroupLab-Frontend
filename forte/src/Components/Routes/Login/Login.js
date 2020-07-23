@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { DataContext } from "../../../App";
 import apiUrl from "../../../apiConfig";
 import axios from "axios";
-import "./Login.css";
+import "./Login.scss";
 
 export default function Login() {
   const { activeUser, setActiveUser } = useContext(DataContext);
@@ -59,7 +59,7 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div id="login-wrapper">
       <h2>Login</h2>
       <h3>{invalidEntry}</h3>
       <form onSubmit={handleSubmit}>

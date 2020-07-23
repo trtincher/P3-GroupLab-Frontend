@@ -1,0 +1,29 @@
+$masterBackground: rgb(196, 222, 234);
+$masterTextColor: white;
+$masterTextShadow: 2px 2px 2px black;
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+  width: 100vw;
+  img {
+    width: 300px;
+    margin-bottom: -20px;
+    margin-right: 5px;
+  }
+  #landing-links {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  div img {
+    width: 500px;
+  }
+}

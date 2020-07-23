@@ -1,0 +1,25 @@
+// Color Palette
+
+$masterBackground: rgb(196, 222, 234);
+$masterTextColor: white;
+$masterTextShadow: 2px 2px 2px black;
+
+#layout-div {
+  height: 100;
+  display: flex;
+  flex-direction: column;
+  font-family: helvetica, sans-serif;
+  justify-content: center;
+  align-items: center;
+  background-color: $masterBackground;
+  color: $masterTextColor;
+  text-shadow: $masterTextShadow;
+  h1 {
+    font-size: 50px;
+  }
+  @media only screen and (min-width: 768px) {
+    h1 {
+      font-size: 70px;
+    }
+  }
+}

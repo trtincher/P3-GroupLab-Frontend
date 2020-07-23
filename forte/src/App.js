@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
 import { Route, Redirect, Switch, withRouter } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 
 import Landing from "./Components/Routes/Landing/Landing";
 import About from "./Components/Routes/About/About";
@@ -18,28 +18,33 @@ import Dashboard from "./Components/Routes/Dashboard/Dashboard";
 export const DataContext = createContext();
 
 const App = () => {
-
   const [activeUser, setActiveUser] = useState([]);
 
   return (
-    <Switch>
-      <Route exact path="/" component={Landing} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/meetTheTeam" component={MeetTheTeam} />
+    <div id="app-wrapper">
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/meetTheTeam" component={MeetTheTeam} />
 
-      <DataContext.Provider value={{ activeUser, setActiveUser }}>
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/deleteProfile" component={DeleteProfile} />
-        <Route exact path="/editProfile" component={EditProfile} />
-        <Route exact path="/connections" component={Connections} />
-        <Route exact path="/profile/:email" render={routerProps => <Profile {...routerProps} />} />
-        <Route exact path="/matches" component={Matches} />
-        <Route exact path="/dashboard">
-          {activeUser.length > 0 ? <Dashboard /> : <Redirect to="/login" />}
-        </Route>
-      </DataContext.Provider>
-    </Switch>
+        <DataContext.Provider value={{ activeUser, setActiveUser }}>
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/deleteProfile" component={DeleteProfile} />
+          <Route exact path="/editProfile" component={EditProfile} />
+          <Route exact path="/connections" component={Connections} />
+          <Route
+            exact
+            path="/profile/:email"
+            render={(routerProps) => <Profile {...routerProps} />}
+          />
+          <Route exact path="/matches" component={Matches} />
+          <Route exact path="/dashboard">
+            {activeUser.length > 0 ? <Dashboard /> : <Redirect to="/login" />}
+          </Route>
+        </DataContext.Provider>
+      </Switch>
+    </div>
   );
 };
 
