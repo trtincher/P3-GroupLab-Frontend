@@ -39,9 +39,6 @@ const Dashboard = () => {
     makeAPICall();
   }, []);
 
-  console.log("tests:");
-  console.log("activeUser.student: ", activeUser.student);
-
   // this returns the teacher dash
   if (
     activeUser[0] &&

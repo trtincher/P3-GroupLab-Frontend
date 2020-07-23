@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { DataContext } from "../../../App";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
 export default function Connections() {
   const dataContext = useContext(DataContext);
-  const activeUser = dataContext.activeUser[0];
+  let activeUser = dataContext.activeUser[0];
 
+  useEffect(() => {
+    console.log("activeUser changed!")
+    if (activeUser !== undefined) {
+      // console.log(activeUser.studentRoster)
+    }
+  },[activeUser]);
+console.log(activeUser)
   if (activeUser === undefined) {
     console.log("waiting for data");
     return <p>No activeUser yet</p>;

@@ -9,14 +9,13 @@ const Profile = (props) => {
   const { activeUser, setActiveUser } = useContext(DataContext);
   // console.log("active user - ", activeUser);
   const [userProfile, setUserProfile] = useState([]);
-  const [showButton, setShowButton] = useState(true);
 
   let wholePath = props.location.pathname;
   let path = wholePath
     .split("")
     .splice(9, wholePath.length - 1)
     .join("");
-  console.log("path", path);
+  // console.log("path", path);
 
   // this is to set userProfile
   useEffect(() => {
@@ -45,23 +44,6 @@ const Profile = (props) => {
     makeAPICall();
   }, []);
 
-  // // decide whether to show "connect!" button (not working yet)
-  // if (activeUser[0] > 0) {
-  //   if (activeUser[0].teacher !== userProfile[0].teacher) {
-  //     if (activeUser[0].teacher === true) {
-  //       let studentArr = []
-  //       activeUser[0].studentRoster.forEach(student => {
-  //         studentArr.push(student._id);
-  //       })
-  //       if (studentArr.indexOf(userProfile._id) >= 0) {
-  //         setShowButton(true);
-  //       }
-  //     }
-  //   }
-  // }
-
-  console.log(activeUser[0]);
-
   // handle the "Connect!" button
   const handleConnectClick = () => {
     let connection = userProfile[0];
@@ -74,7 +56,6 @@ const Profile = (props) => {
             method: "PUT",
           });
         };
-        addToRoster();
 
         // add activeUser to connection's myTeachers
         const addToTeachers = async () => {
@@ -83,13 +64,12 @@ const Profile = (props) => {
             method: "PUT",
           });
         };
-        addToTeachers();
 
         // re-assign activeUser
-        const getStudent = async () => {
+        const getTeacher = async () => {
           try {
             const response = await axios(
-              `${apiUrl}/students/email/${activeUser[0].email}`
+              `${apiUrl}/teachers/email/${activeUser[0].email}`
             );
             console.log("Profile getStudent: ", response);
             if (response.data.length > 0) {
@@ -99,7 +79,12 @@ const Profile = (props) => {
             console.error(err);
           }
         };
-        getStudent();
+        const allTheThings = async () => {
+          await addToRoster();
+          await addToTeachers();
+          await getTeacher();
+        };
+        allTheThings();
       } else {
         // add connection to activeUser's myTeachers
         const addToTeachers = async () => {
@@ -108,7 +93,7 @@ const Profile = (props) => {
             method: "PUT",
           });
         };
-        addToTeachers();
+
         // add activeUser to connection's studentRoster
         const addToRoster = async () => {
           const response = await axios({
@@ -116,14 +101,13 @@ const Profile = (props) => {
             method: "PUT",
           });
         };
-        addToRoster();
+
         // re-assign activeUser
-        const getTeacher = async () => {
+        const getStudent = async () => {
           try {
             const response = await axios(
-              `${apiUrl}/teachers/email/${activeUser[0].email}`
+              `${apiUrl}/students/email/${activeUser[0].email}`
             );
-            console.log("Profile getTeacher: ", response);
             if (response.data.length > 0) {
               setActiveUser(response.data);
             }
@@ -131,15 +115,20 @@ const Profile = (props) => {
             console.error(err);
           }
         };
-        getTeacher();
+        const allTheThings = async () => {
+          await addToRoster();
+          await addToTeachers();
+          await getStudent();
+        };
+        allTheThings();
       }
     }
-    alert(`Added ${userProfile[0].firstName} to your connections.`)
+    alert(`Added ${userProfile[0].firstName} to your connections.`);
   };
 
-  console.log("apiUrl", apiUrl);
-  console.log("userProf - ", `${apiUrl}/teachers/email/${path}`);
-  console.log("user - ", userProfile);
+  // console.log("apiUrl", apiUrl);
+  // console.log("userProf - ", `${apiUrl}/teachers/email/${path}`);
+  // console.log("user - ", userProfile);
 
   if (userProfile[0] && activeUser[0] !== undefined) {
     const firstName = userProfile[0].firstName;
@@ -188,7 +177,7 @@ const Profile = (props) => {
           {path === activeUser[0].email ? "Edit Profile" : null}
         </Link>
 
-        {showButton === true ? (
+        {activeUser[0].email !== userProfile[0].email ? (
           <button onClick={handleConnectClick}>Connect!</button>
         ) : (
           ""
