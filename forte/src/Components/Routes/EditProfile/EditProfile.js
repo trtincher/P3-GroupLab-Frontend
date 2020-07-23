@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import "./EditProfile.css";
@@ -33,7 +33,8 @@ const EditProfile = (props) => {
     teacher: true,
   });
 
-  setTeacherInput({teacherInput:activeUser[0]})
+
+
 
   const [studentInput, setStudentInput] = useState({
     firstName: "",
@@ -46,7 +47,10 @@ const EditProfile = (props) => {
     student: true,
   });
 
-  setStudentInput({studentInput:activeUser[0]})
+  useEffect (()=>{
+    setTeacherInput(activeUser[0])
+    setStudentInput(activeUser[0])
+  },[])
 
   // if delete is clicked Go to DeleteProfile.js
   const showDiv = (event) => {
@@ -79,7 +83,7 @@ const EditProfile = (props) => {
     axios({
       url: `${apiUrl}/teachers/${activeUser[0]._id}`,
       method: "PUT",
-      // data: teacherInput,
+      data: teacherInput,
     })
       // .then(() => setIsUpdated(true))
       .catch(console.error);
@@ -91,7 +95,7 @@ const EditProfile = (props) => {
     axios({
       url: `${apiUrl}/students/${activeUser[0]._id}`,
       method: "POST",
-      // data: studentInput,
+      data: studentInput,
     })
       // .then(() => setIsUpdated(true))
       .catch(console.error);
