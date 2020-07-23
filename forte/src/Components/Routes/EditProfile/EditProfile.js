@@ -1,110 +1,102 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 import "./EditProfile.css";
-import { DataContext } from '../../../App';
-import apiUrl from '../../../apiConfig';
+import { DataContext } from "../../../App";
+import apiUrl from "../../../apiConfig";
 
 const EditProfile = (props) => {
-    const dataContext = useContext(DataContext);
-    const activeUser = dataContext.activeUser;
-    const [ clickedDelete, setIsClickedDelete ] = useState(false);
-    const [teacherStudent, setTeacherStudent] = useState("");
-    const [teacherSubmitted, setTeacherSubmitted] = useState(false);
-    const [studentSubmitted, setStudentSubmitted] = useState(false);
+  const dataContext = useContext(DataContext);
+  const currentUser = dataContext.activeUser;
+  const { activeUser, setActiveUser } = useContext(DataContext);
+  const [clickedDelete, setIsClickedDelete] = useState(false);
 
-    if (activeUser[0] !== undefined) {
-      if (activeUser[0].teacher === true) {
-        setTeacherStudent('Teacher');
-      } else if (activeUser[0].student === true) {
-        setTeacherStudent('Student');
-      }
-    }
-  
-    const [teacherInput, setTeacherInput] = useState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      idiom1: "",
-      idiom2: "",
-      idiom3: "",
-      language: "",
-      location: "",
-      rate: "",
-      teachingStyle: "",
-      teacher: true,
-    });
-  
-    const [studentInput, setStudentInput] = useState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      idiom: "",
-      language: "",
-      location: "",
-      other: "",
-      student: true,
-    });
+  console.log("edit profile active user -", activeUser);
 
-    // if delete is clicked Go to DeleteProfile.js
-    const showDiv = (event) => {
-      setIsClickedDelete(true);
-    }
-  
-    const handleTeacherChange = (e) => {
-      const field = e.target.value;
-      console.log("field", field);
-      setTeacherInput({
-        ...teacherInput,
-        [e.target.name]: e.target.value,
-      });
-    };
-  
-    const handleStudentChange = (e) => {
-      const field = e.target.value;
-      console.log("Field", field);
-      setStudentInput({
-        ...studentInput,
-        [e.target.name]: e.target.value,
-      });
-    };
-  
-    const handleTeacherSubmit = (e) => {
-      e.preventDefault();
-      console.log("handle teacher submit");
-      axios({
-        // url: `http://localhost:4000/api/students/${userId}`,
-        url: `http://localhost:4000/api/students`,
-        method: "POST",
-        data: teacherInput,
+  const [teacherInput, setTeacherInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    idiom1: "",
+    idiom2: "",
+    idiom3: "",
+    language: "",
+    location: "",
+    rate: "",
+    teachingStyle: "",
+    teacher: true,
+  });
+
+  const [studentInput, setStudentInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    idiom: "",
+    language: "",
+    location: "",
+    other: "",
+    student: true,
+  });
+
+  // if delete is clicked Go to DeleteProfile.js
+  const showDiv = (event) => {
+    setIsClickedDelete(true);
+  };
+
+  const handleTeacherChange = (e) => {
+    const field = e.target.value;
+    console.log("field", field);
+    setTeacherInput({
+      ...teacherInput,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleStudentChange = (e) => {
+    const field = e.target.value;
+    console.log("Field", field);
+    setStudentInput({
+      ...studentInput,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleTeacherSubmit = (e) => {
+    e.preventDefault();
+    console.log("handle teacher submit");
+    axios({
+      url: `http://localhost:4000/api/teachers/${currentUser[0]._id}`,
+      method: "PUT",
+      data: teacherInput,
+    })
+      .then((res) => {
+        console.log('res.body', res.body)
+        setActiveUser(res.body);
+        props.history.push("/login");
+        console.log('res', res);
       })
-        .then((res) => {
-          props.history.push("/login");
-          console.log(res);
-        })
-        .catch(console.error);
-    };
-  
-    const handleStudentSubmit = (e) => {
-      e.preventDefault();
-      console.log("handle student submit");
-      axios({
-        url: `http://localhost:4000/api/students/`,
-        // url: `http://localhost:4000/api/students/${userId}`,
-        method: "POST",
-        data: studentInput,
+      .catch(console.error);
+  };
+
+  const handleStudentSubmit = (e) => {
+    e.preventDefault();
+    console.log("handle student submit");
+    axios({
+      url: `http://localhost:4000/api/students/${currentUser[0]._id}`,
+      method: "POST",
+      data: studentInput,
+    })
+      .then((res) => {
+        console.log('res.body', res.body)
+        setActiveUser(res.body);
+        props.history.push("/login");
+        console.log('res', res);
       })
-        .then((res) => {
-          props.history.push("/login");
-          console.log(res);
-        })
-        .catch(console.error);
-    };
-  
-    // if (teacherSubmitted) {
-    //   return <Redirect to="/login" />;
-    // }
-    if (teacherStudent === "Teacher") {
+      .catch(console.error);
+  };
+
+  if (currentUser[0] !== undefined) {
+    if (currentUser[0].teacher === true) {
       return (
         <>
           <h3>Teacher Sign-Up</h3>
@@ -116,7 +108,7 @@ const EditProfile = (props) => {
               value={teacherInput.firstName}
             />
             <label>Last Name:</label>
-  
+
             <input
               onChange={handleTeacherChange}
               name="lastName"
@@ -129,21 +121,21 @@ const EditProfile = (props) => {
               value={teacherInput.email}
             />
             <label>Primary Instrument:</label>
-  
+
             <input
               onChange={handleTeacherChange}
               name="idiom1"
               value={teacherInput.idiom1}
             />
             <label>Secondary Instrument:</label>
-  
+
             <input
               onChange={handleTeacherChange}
               name="idiom2"
               value={teacherInput.idiom2}
             />
             <label>Other Instrument:</label>
-  
+
             <input
               onChange={handleTeacherChange}
               name="idiom3"
@@ -156,7 +148,7 @@ const EditProfile = (props) => {
               value={teacherInput.language}
             />
             <label>Location (City, State):</label>
-  
+
             <input
               onChange={handleTeacherChange}
               name="location"
@@ -176,15 +168,17 @@ const EditProfile = (props) => {
             />
             <input type="submit" />
           </form>
-          <button onClick={() => setTeacherStudent("")}>Back</button>
+          <button>Back</button>
 
-          { clickedDelete ? <Redirect to='/deleteprofile' /> : null}
-          <button type='button' onClick={showDiv} >Delete Profile</button>
+          {clickedDelete ? <Redirect to="/deleteprofile" /> : null}
+          <button type="button" onClick={showDiv}>
+            Delete Profile
+          </button>
         </>
       );
     }
 
-    if (teacherStudent === "Student") {
+    if (currentUser[0].teacher === true) {
       return (
         <>
           <h3>Student Sign-Up</h3>
@@ -233,15 +227,18 @@ const EditProfile = (props) => {
             />
             <input type="submit" />
           </form>
-          <button onClick={() => setTeacherStudent("")}>Back</button>
+          <button>Back</button>
 
-          { clickedDelete ? <Redirect to='/deleteprofile' /> : null}
-          <button type='button' onClick={showDiv} >Delete Profile</button>
+          {clickedDelete ? <Redirect to="/deleteprofile" /> : null}
+          <button type="button" onClick={showDiv}>
+            Delete Profile
+          </button>
         </>
       );
     }
-    if (teacherStudent === "") {return <h3>Loading...</h3>}
+  } else {
+    return <h3>Loading...</h3>;
   }
-  
+};
 
 export default EditProfile;
