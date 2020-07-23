@@ -53,7 +53,7 @@ export default function Login() {
     getTeacher();
   };
 
-  console.log(activeUser);
+  // console.log(activeUser);
 
   if (activeUser.length > 0) {
     return <Redirect to="/dashboard" />;
