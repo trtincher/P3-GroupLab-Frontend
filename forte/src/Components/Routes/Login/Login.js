@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { DataContext } from "../../../App";
-import apiUrl from '../../../apiConfig';
+import apiUrl from "../../../apiConfig";
 import axios from "axios";
 import "./Login.css";
 
@@ -9,6 +9,7 @@ export default function Login() {
   const { activeUser, setActiveUser } = useContext(DataContext);
   const [input, setInput] = useState("");
   const [invalidEntry, setInvalidEntry] = useState("");
+
   const handleChange = (e) => {
     const email = e.target.value;
     console.log("Event", email);
@@ -17,12 +18,14 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const getStudent = async () => {
       try {
-        const response = await axios(
-          `${apiUrl}/students/email/${input}`
-        );
-        if (response.data[0]) {
+        const response = await axios(`${apiUrl}/students/email/${input}`);
+        console.log("Response getStudent: ", response);
+
+        if (response.data.length > 0) {
+
           setActiveUser(response.data);
           setInput("");
         }
@@ -34,11 +37,9 @@ export default function Login() {
 
     const getTeacher = async () => {
       try {
-        const response = await axios(
-          `${apiUrl}/teachers/email/${input}`
-        );
-        console.log("Response activeUser: ", response);
-        if (response.data[0]) {
+        const response = await axios(`${apiUrl}/teachers/email/${input}`);
+        console.log("Response getTeacher: ", response);
+        if (response.data.length > 0) {
           setActiveUser(response.data);
           setInput("");
         } else {
@@ -52,11 +53,11 @@ export default function Login() {
     getTeacher();
   };
 
+  console.log(activeUser);
+
   if (activeUser.length > 0) {
     return <Redirect to="/dashboard" />;
   }
-
-  console.log(activeUser);
 
   return (
     <div>
