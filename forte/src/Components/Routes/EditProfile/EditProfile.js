@@ -108,6 +108,7 @@ if(isTeacherUpdated){
     .then((res) => setActiveUser(res.data))
     .then(()=> setIsTeacherUpdated(false))
     .then(()=> props.history.push('/dashboard'))
+
     .catch(console.error) 
 } 
 

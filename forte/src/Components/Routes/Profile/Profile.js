@@ -137,6 +137,8 @@ const Profile = (props) => {
     const rate = userProfile[0].rate;
     const lang = userProfile[0].language;
     const contact = userProfile[0].email;
+    const other = userProfile[0].other;
+    const teachStyle = userProfile[0].teachingStyle;
     const idiom = userProfile[0].idiom;
     const idiomList = [
       userProfile[0].idiom1,
@@ -173,6 +175,13 @@ const Profile = (props) => {
 
         <h2>Contact</h2>
         <h2>{contact}</h2>
+
+        <h2>Other</h2>
+        <h2>{other}</h2>
+
+        <h2>Teaching Style</h2>
+        <h2>{teachStyle}</h2>
+
         <Link to="/editprofile">
           {path === activeUser[0].email ? "Edit Profile" : null}
         </Link>
