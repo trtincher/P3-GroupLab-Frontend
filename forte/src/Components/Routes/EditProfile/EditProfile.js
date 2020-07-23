@@ -107,6 +107,8 @@ if(isTeacherUpdated){
   axios({url: `${apiUrl}/teachers/email/${activeUser[0].email}`})
     .then((res) => setActiveUser(res.data))
     .then(()=> setIsTeacherUpdated(false))
+    .then(()=> props.history.push('/dashboard'))
+
     .catch(console.error) 
 } 
 
@@ -114,6 +116,7 @@ if(isStudentUpdated){
   axios({url: `${apiUrl}/students/email/${activeUser[0].email}`})
     .then((res) => setActiveUser(res.data))
     .then(()=> setIsStudentUpdated(false))
+    .then(()=> props.history.push('/dashboard'))
     .catch(console.error);
 } 
 
