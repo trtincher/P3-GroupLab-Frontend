@@ -7,11 +7,14 @@ import apiUrl from "../../../apiConfig";
 
 const EditProfile = (props) => {
   const dataContext = useContext(DataContext);
-  const currentUser = dataContext.activeUser;
-  const { activeUser, setActiveUser } = useContext(DataContext);
+  const activeUser = dataContext.activeUser;
+  const setActiveUser = dataContext.setActiveUser;
+
+  // console.log('setactive', setActiveUser)
+  // const { activeUser, setActiveUser } = useContext(DataContext);
   const [clickedDelete, setIsClickedDelete] = useState(false);
 
-  console.log("edit profile active user -", activeUser);
+  // console.log("edit profile active user -", activeUser);
 
   const [teacherInput, setTeacherInput] = useState({
     firstName: "",
@@ -65,38 +68,86 @@ const EditProfile = (props) => {
     e.preventDefault();
     console.log("handle teacher submit");
     axios({
-      url: `http://localhost:4000/api/teachers/${currentUser[0]._id}`,
+      url: `http://localhost:4000/api/teachers/${activeUser[0]._id}`,
       method: "PUT",
       data: teacherInput,
     })
-      .then((res) => {
+      .then((req, res) => {
         console.log('res.body', res.body)
-        setActiveUser(res.body);
-        props.history.push("/login");
-        console.log('res', res);
+        console.log('req.body', req.body)
+        // console.log('req.body', req.body)
+        // // setActiveUser(res.body);
+        // props.history.push("/login");
+        // console.log('res', req);
+
+        // axios({
+        //   url: `http://localhost:4000/api/teachers/${activeUser[0].email}`,
+        //   method: "GET",
+        //   data: teacherInput,
+        // })
+        // .then((req, res) => {
+        //   console.log('res.body2', res.body)
+        //   console.log('req.body2', req.body)
+        //   // // setActiveUser(res.body);
+        //   // props.history.push("/login");
+        //   // console.log('res', req);
+        // })
       })
       .catch(console.error);
   };
+
+  // const handleTeacherSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log("handle teacher submit");
+  //   const updateTeacher = async () => {
+  //     try {
+  //       const response = await axios({
+  //         url: `http://localhost:4000/api/teachers/${activeUser[0]._id}`,
+  //         method: "PUT",
+  //         data: teacherInput,
+  //       });
+  //       if (response.data[0]) {
+  //         console.log('response.body', response.body)
+  //         setActiveUser(response.body);
+  //         props.history.push("/login");
+  //         console.log('response', response);
+  //       }
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  //   updateTeacher();
+  // }
+
+
+
+
+
+
 
   const handleStudentSubmit = (e) => {
     e.preventDefault();
     console.log("handle student submit");
     axios({
-      url: `http://localhost:4000/api/students/${currentUser[0]._id}`,
+      url: `http://localhost:4000/api/students/${activeUser[0]._id}`,
       method: "POST",
       data: studentInput,
     })
       .then((res) => {
         console.log('res.body', res.body)
-        setActiveUser(res.body);
+        // setActiveUser(res.body);
         props.history.push("/login");
         console.log('res', res);
       })
       .catch(console.error);
   };
 
-  if (currentUser[0] !== undefined) {
-    if (currentUser[0].teacher === true) {
+
+
+
+
+  if (activeUser[0] !== undefined) {
+    if (activeUser[0].teacher === true) {
       return (
         <>
           <h3>Teacher Sign-Up</h3>
@@ -178,7 +229,7 @@ const EditProfile = (props) => {
       );
     }
 
-    if (currentUser[0].teacher === true) {
+    if (activeUser[0].teacher === true) {
       return (
         <>
           <h3>Student Sign-Up</h3>
