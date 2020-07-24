@@ -74,7 +74,6 @@ const Dashboard = () => {
       });
     }
 
-
     console.log("matchCounter - ", matchCounterTeach);
 
     return (
@@ -89,7 +88,6 @@ const Dashboard = () => {
             fontFamily: "helvetica, sans-serif",
             textDecoration: "none",
             color: "white",
-            textDecoration: "none",
             marginTop: "15px",
             fontSize: "40px",
             fontWeight: "600",
@@ -105,7 +103,6 @@ const Dashboard = () => {
             fontFamily: "helvetica, sans-serif",
             textDecoration: "none",
             color: "white",
-            textDecoration: "none",
             marginTop: "15px",
             fontSize: "40px",
             fontWeight: "600",
@@ -123,7 +120,6 @@ const Dashboard = () => {
             fontFamily: "helvetica, sans-serif",
             textDecoration: "none",
             color: "white",
-            textDecoration: "none",
             marginTop: "15px",
             fontSize: "30px",
             fontWeight: "600",
@@ -131,7 +127,6 @@ const Dashboard = () => {
         >
           View your profile
         </Link>
-
       </div>
     );
   }
@@ -142,7 +137,6 @@ const Dashboard = () => {
     studentMatches[0] &&
     teacherMatches[0] !== undefined &&
     activeUser[0].student === true
-
   ) {
     const userName = activeUser[0].firstName;
     const email = "/profile/" + activeUser[0].email;
@@ -178,7 +172,6 @@ const Dashboard = () => {
             fontFamily: "helvetica, sans-serif",
             textDecoration: "none",
             color: "white",
-            textDecoration: "none",
             marginTop: "15px",
             fontSize: "40px",
             fontWeight: "600",
@@ -194,7 +187,6 @@ const Dashboard = () => {
             fontFamily: "helvetica, sans-serif",
             textDecoration: "none",
             color: "white",
-            textDecoration: "none",
             marginTop: "15px",
             fontSize: "40px",
             fontWeight: "600",
@@ -212,7 +204,6 @@ const Dashboard = () => {
             fontFamily: "helvetica, sans-serif",
             textDecoration: "none",
             color: "white",
-            textDecoration: "none",
             marginTop: "15px",
             fontSize: "40px",
             fontWeight: "600",
