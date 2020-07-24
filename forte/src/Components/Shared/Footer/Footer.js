@@ -3,6 +3,10 @@ import "./Footer.scss";
 
 export default function Footer() {
   return (
-    <p>© Copyright {new Date().getFullYear()}. Forte - All Rights Reserved.</p>
+    <div>
+      <p id="footer-para">
+        © Copyright {new Date().getFullYear()}. Forte - All Rights Reserved.
+      </p>
+    </div>
   );
 }

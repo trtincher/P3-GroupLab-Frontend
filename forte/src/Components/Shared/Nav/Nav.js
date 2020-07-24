@@ -26,7 +26,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
@@ -42,7 +41,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
@@ -58,7 +56,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
@@ -74,7 +71,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
@@ -90,7 +86,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
@@ -106,7 +101,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
@@ -127,7 +121,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "20px",
                 }}
@@ -142,7 +135,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "20px",
                 }}
@@ -157,7 +149,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "20px",
                 }}
@@ -172,7 +163,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "20px",
                 }}
@@ -187,7 +177,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "20px",
                 }}
@@ -202,7 +191,6 @@ export default function Nav() {
                   fontFamily: "helvetica, sans-serif",
                   textDecoration: "none",
                   color: "white",
-                  textDecoration: "none",
                   marginTop: "15px",
                   fontSize: "20px",
                 }}
