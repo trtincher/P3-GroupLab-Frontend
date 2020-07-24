@@ -7,7 +7,7 @@ export default function MeetTheTeam() {
       <h2>Meet the Forte Team</h2>
       <div className="team-card">
         <h3>Allie</h3>
-        <img src="https://i.imgur.com/yHhs4Vx.jpg" alt="Allie P." />
+        <img src="https://i.imgur.com/XFoG15N.jpg" alt="Allie P." />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
