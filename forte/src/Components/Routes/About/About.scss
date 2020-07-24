@@ -25,7 +25,15 @@ $masterTextShadow: 2px 2px 2px black;
       text-align: center;
     }
     p {
+      font-size: 20px;
+      line-height: 1.5rem;
       font-weight: 600;
-    }
+      text-shadow: 1px 1px 1px black;
+      // text-shadow: none;
+      // color: black;
+      border-radius: 10px;
+      margin: 40px 40px;
+      font-weight: 600;
   }
+}
 }
