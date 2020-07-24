@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./Profile.css";
+import "./Profile.scss";
 import { DataContext } from "../../../App";
 import apiUrl from "../../../apiConfig";
 
@@ -153,34 +153,38 @@ const Profile = (props) => {
     });
 
     return (
-      <div>
+      <div id="profile-wrapper">
         <h1>
           {firstName} {lastName}
         </h1>
         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
 
-        <h2>Location</h2>
-        <h2>{location}</h2>
+        <h2 className="profile-h2">Location</h2>
+        <h3 className="profile-h3">{location}</h3>
 
-        <h2>{userProfile[0].teacher === true ? "Price/hr" : null}</h2>
-        <h2>{userProfile[0].teacher === true ? rate : null}</h2>
-
-        <h2>Instruments</h2>
-        <h2>
-          {userProfile[0].student === true ? idiom : idiomList.join(", ")}
+        <h2 className="profile-h2">
+          {userProfile[0].teacher === true ? "Price" : null}
         </h2>
+        <h3 className="profile-h3">
+          {userProfile[0].teacher === true ? rate : null}/hr
+        </h3>
 
-        <h2>Language</h2>
-        <h2>{lang}</h2>
+        <h2 className="profile-h2">Instruments</h2>
+        <h3 className="profile-h3">
+          {userProfile[0].student === true ? idiom : idiomList.join(", ")}
+        </h3>
 
-        <h2>Contact</h2>
-        <h2>{contact}</h2>
+        <h2 className="profile-h2">Language</h2>
+        <h3 className="profile-h3">{lang}</h3>
 
-        <h2>Other</h2>
-        <h2>{other}</h2>
+        <h2 className="profile-h2">Contact</h2>
+        <h3 className="profile-h3">{contact}</h3>
 
-        <h2>Teaching Style</h2>
-        <h2>{teachStyle}</h2>
+        <h2 className="profile-h2">Other</h2>
+        <h3 className="profile-h3">{other}</h3>
+
+        <h2 className="profile-h2">Teaching Style</h2>
+        <h3 className="profile-h3">{teachStyle}</h3>
 
         <Link to="/editprofile">
           {path === activeUser[0].email ? "Edit Profile" : null}
