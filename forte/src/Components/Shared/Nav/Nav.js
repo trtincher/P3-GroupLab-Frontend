@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
 
-export default function Nav() {
+export default function Nav({ setHideProps, hideProps }) {
   // State to open and close the mobile nav
   const [open, setOpen] = useState(false);
 
@@ -12,7 +12,13 @@ export default function Nav() {
         <div id="burger-menu">
           <div id="burger">
             <h1 className="layout-h1">Forte</h1>
-            <div id="burger-span" onClick={() => setOpen(!open)}>
+            <div
+              id="burger-span"
+              onClick={() => {
+                setOpen(!open);
+                setHideProps(!open);
+              }}
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -29,7 +35,10 @@ export default function Nav() {
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  setHideProps(!open);
+                }}
               >
                 Home
               </Link>
@@ -44,7 +53,10 @@ export default function Nav() {
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  setHideProps(!open);
+                }}
               >
                 About
               </Link>
@@ -59,7 +71,10 @@ export default function Nav() {
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  setHideProps(!open);
+                }}
               >
                 Meet the Team
               </Link>
@@ -74,7 +89,10 @@ export default function Nav() {
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  setHideProps(!open);
+                }}
               >
                 Dashboard
               </Link>
@@ -89,7 +107,10 @@ export default function Nav() {
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  setHideProps(!open);
+                }}
               >
                 Sign Up
               </Link>
@@ -104,7 +125,10 @@ export default function Nav() {
                   marginTop: "15px",
                   fontSize: "40px",
                 }}
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  setHideProps(!open);
+                }}
               >
                 Login
               </Link>
