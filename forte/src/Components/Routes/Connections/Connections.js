@@ -1,22 +1,22 @@
 import React, { useEffect, useContext } from "react";
 import { DataContext } from "../../../App";
 import ProfileCard from "../ProfileCard/ProfileCard";
+import "./Connections.scss";
 
 export default function Connections() {
   const dataContext = useContext(DataContext);
   let activeUser = dataContext.activeUser[0];
 
   useEffect(() => {
-    console.log("activeUser changed!")
+    console.log("activeUser changed!");
     if (activeUser !== undefined) {
       // console.log(activeUser.studentRoster)
     }
-  },[activeUser]);
-console.log(activeUser)
+  }, [activeUser]);
+  console.log(activeUser);
   if (activeUser === undefined) {
     console.log("waiting for data");
     return <p>No activeUser yet</p>;
-
   } else if (activeUser.teacher === false) {
     return (
       <div className="connections">
@@ -42,7 +42,6 @@ console.log(activeUser)
             <ProfileCard key={student._id} person={student} />
           ))}
         </div>
-
       </div>
     );
   }

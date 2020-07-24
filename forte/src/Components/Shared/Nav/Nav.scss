@@ -21,9 +21,15 @@ $masterTextShadow: 2px 2px 2px black;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100vw;
 }
 
 #burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
   h1 {
     margin-bottom: 10px;
   }
