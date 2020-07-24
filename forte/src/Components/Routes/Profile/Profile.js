@@ -7,7 +7,6 @@ import apiUrl from "../../../apiConfig";
 
 const Profile = (props) => {
   const { activeUser, setActiveUser } = useContext(DataContext);
-  // console.log("active user - ", activeUser);
   const [userProfile, setUserProfile] = useState([]);
 
   let wholePath = props.location.pathname;
@@ -15,40 +14,41 @@ const Profile = (props) => {
     .split("")
     .splice(9, wholePath.length - 1)
     .join("");
-  // console.log("path", path);
 
   // this is to set userProfile
   useEffect(() => {
-    const makeAPICall = async () => {
+    const makeTeacherAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/teachers/email/${path}`);
-        //  console.log("Response userProfile: ", response);
-        if (response !== undefined) setUserProfile(response.data);
+         console.log("Response userProfile teacher: ", response);
+        if (response.data.length > 0) setUserProfile(response.data);
       } catch (err) {
         console.error(err);
       }
     };
-    makeAPICall();
-  }, []);
 
-  useEffect(() => {
-    const makeAPICall = async () => {
+    const makeStudentAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/students/email/${path}`);
-        // console.log("Response userProfile: ", response);
-        if (response !== undefined) setUserProfile(response.data);
+        console.log("Response userProfile student: ", response);
+        if (response.data.length > 0) setUserProfile(response.data);
       } catch (err) {
         console.error(err);
       }
     };
-    makeAPICall();
+
+    makeTeacherAPICall();
+    makeStudentAPICall();
   }, []);
+
+  console.log("userprofile = ", userProfile)
 
   // handle the "Connect!" button
   const handleConnectClick = () => {
     let connection = userProfile[0];
     if (connection !== undefined) {
       if (connection.student === true) {
+
         // add connection to activeUser's studentRoster
         const addToRoster = async () => {
           const response = await axios({
