@@ -77,7 +77,7 @@ const Dashboard = () => {
     console.log("matchCounter - ", matchCounterTeach);
 
     return (
-      <div>
+      <div className="dashboard-wrapper">
         <h2>Dashboard</h2>
         <h3>Welcome back {userName}!</h3>
         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
@@ -161,7 +161,7 @@ const Dashboard = () => {
     }
 
     return (
-      <div>
+      <div className="dashboard-wrapper">
         <h2>Dashboard</h2>
         <h3>Welcome back {userName}!</h3>
         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}

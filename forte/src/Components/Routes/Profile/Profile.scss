@@ -1,0 +1,28 @@
+$masterBackground: rgb(196, 222, 234);
+$masterTextColor: white;
+$masterTextShadow: 2px 2px 2px black;
+
+#profile-wrapper {
+  text-shadow: 2px 2px 1px black;
+  h1 {
+    font-size: 45px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+  .profile-h2 {
+    font-size: 35px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+  .profile-h3 {
+    font-size: 20px;
+    margin-top: 0px;
+    text-shadow: 2px 2px 1px black;
+  }
+  a {
+    text-decoration: none;
+    color: $masterTextColor;
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
