@@ -12,36 +12,27 @@ const Dashboard = () => {
   const [studentMatches, setStudentMatches] = useState({});
   const [teacherMatches, setTeacherMatches] = useState({});
 
-  // this gets all the students for the teacher dash
   useEffect(() => {
-    const makeAPICall = async () => {
+      // this gets all the students for the teacher dash
+    const makeStudentAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/students`);
-
-        // console.log("Response students: ", response);
-
         setStudentMatches(response.data);
       } catch (err) {
         console.error(err);
       }
     };
-    makeAPICall();
-  }, []);
-
-  // this gets all the teachers for the student dash
-  useEffect(() => {
-    const makeAPICall = async () => {
+     // this gets all the teachers for the student dash
+    const makeTeacherAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/teachers`);
-
-        // console.log("Response teachers: ", response);
-
         setTeacherMatches(response.data);
       } catch (err) {
         console.error(err);
       }
     };
-    makeAPICall();
+    makeTeacherAPICall();
+    makeStudentAPICall();
   }, []);
 
   // this returns the teacher dash
@@ -73,8 +64,6 @@ const Dashboard = () => {
         }
       });
     }
-
-    console.log("matchCounter - ", matchCounterTeach);
 
     return (
       <div className="dashboard-wrapper">
