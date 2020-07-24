@@ -1,0 +1,15 @@
+.matches {
+	text-shadow: none;
+	width: 100vw;
+}
+
+.cardContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	a {
+		color: black;
+		text-decoration: none;
+		display: inline;
+	}
+}
