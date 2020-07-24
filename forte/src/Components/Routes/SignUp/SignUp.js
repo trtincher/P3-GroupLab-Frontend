@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TeacherForm from "../../Shared/TeacherForm/TeacherForm";
 import StudentForm from "../../Shared/StudentForm/StudentForm";
+import apiUrl from '../../../apiConfig';
 import axios from "axios";
 import "./SignUp.css";
 
@@ -54,7 +55,7 @@ export default function SignUp(props) {
     e.preventDefault();
     console.log("handle teacher submit");
     axios({
-      url: "http://localhost:4000/api/teachers",
+      url: `${apiUrl}/teachers`,
       method: "POST",
       data: teacherInput,
     })
@@ -69,7 +70,7 @@ export default function SignUp(props) {
     e.preventDefault();
     console.log("handle student submit");
     axios({
-      url: "http://localhost:4000/api/students",
+      url: `${apiUrl}/students`,
       method: "POST",
       data: studentInput,
     })

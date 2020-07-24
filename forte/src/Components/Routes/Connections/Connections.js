@@ -1,37 +1,23 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useContext } from "react";
+import { DataContext } from "../../../App";
 import ProfileCard from "../ProfileCard/ProfileCard";
-import apiUrl from "../../../apiConfig";
-
 
 export default function Connections() {
-  // const dataContext = useContext(activeUser);
-  const [activeUser, setActiveUser] = useState({});
-  const [thisIsaTeacher, setThisIsaTeacher] = useState(false);
+  const dataContext = useContext(DataContext);
+  let activeUser = dataContext.activeUser[0];
 
   useEffect(() => {
-    const makeAPICall = async () => {
-      try {
-
-        const response = await axios(`${apiUrl}/students/Robinson`);
-
-        setActiveUser(response.data[0]);
-        if (response.data[0].teacher === true) {
-          setThisIsaTeacher(true);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    makeAPICall();
-  }, []);
-
-
-  if (activeUser.firstName === undefined) {
+    console.log("activeUser changed!")
+    if (activeUser !== undefined) {
+      // console.log(activeUser.studentRoster)
+    }
+  },[activeUser]);
+console.log(activeUser)
+  if (activeUser === undefined) {
     console.log("waiting for data");
     return <p>No activeUser yet</p>;
 
-  } else if (thisIsaTeacher === false) {
+  } else if (activeUser.teacher === false) {
     return (
       <div className="connections">
         <h1>

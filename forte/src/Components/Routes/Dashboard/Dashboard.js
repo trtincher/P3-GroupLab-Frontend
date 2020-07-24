@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Dashboard.scss";
+
 import { DataContext } from "../../../App";
 import apiUrl from "../../../apiConfig";
 
@@ -16,7 +17,9 @@ const Dashboard = () => {
     const makeAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/students`);
+
         console.log("Response students: ", response);
+
         setStudentMatches(response.data);
       } catch (err) {
         console.error(err);
@@ -30,7 +33,9 @@ const Dashboard = () => {
     const makeAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/teachers`);
+
         console.log("Response teachers: ", response);
+
         setTeacherMatches(response.data);
       } catch (err) {
         console.error(err);
@@ -68,6 +73,7 @@ const Dashboard = () => {
         }
       });
     }
+
 
     console.log("matchCounter - ", matchCounterTeach);
 
@@ -125,6 +131,7 @@ const Dashboard = () => {
         >
           View your profile
         </Link>
+
       </div>
     );
   }
@@ -134,7 +141,8 @@ const Dashboard = () => {
     activeUser[0] &&
     studentMatches[0] &&
     teacherMatches[0] !== undefined &&
-    activeUser.student === true
+    activeUser[0].student === true
+
   ) {
     const userName = activeUser[0].firstName;
     const email = "/profile/" + activeUser[0].email;
