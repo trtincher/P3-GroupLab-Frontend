@@ -18,7 +18,7 @@ const Dashboard = () => {
       try {
         const response = await axios(`${apiUrl}/students`);
 
-        console.log("Response students: ", response);
+        // console.log("Response students: ", response);
 
         setStudentMatches(response.data);
       } catch (err) {
@@ -34,7 +34,7 @@ const Dashboard = () => {
       try {
         const response = await axios(`${apiUrl}/teachers`);
 
-        console.log("Response teachers: ", response);
+        // console.log("Response teachers: ", response);
 
         setTeacherMatches(response.data);
       } catch (err) {
@@ -80,7 +80,6 @@ const Dashboard = () => {
       <div className="dashboard-wrapper">
         <h2>Dashboard</h2>
         <h3>Welcome back {userName}!</h3>
-        {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
         <h2 className="dash-sub">Students</h2>
         <Link
           to="/connections"
