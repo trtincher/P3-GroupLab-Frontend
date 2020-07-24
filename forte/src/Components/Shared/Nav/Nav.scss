@@ -21,9 +21,15 @@ $masterTextShadow: 2px 2px 2px black;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100vw;
 }
 
 #burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
   h1 {
     margin-bottom: 10px;
   }
@@ -85,7 +91,7 @@ $masterTextShadow: 2px 2px 2px black;
     box-shadow: $masterTextShadow;
     height: 50px;
     width: 100vw;
-    background-color: rgb(147, 172, 173);
+    background-color: rgb(163, 163, 163);
     li {
       letter-spacing: 0.2px;
       font-weight: 600;

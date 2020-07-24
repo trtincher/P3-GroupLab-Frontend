@@ -1,0 +1,14 @@
+.connections {
+  text-align: center;
+}
+
+.connection-wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  h1 {
+    text-align: center;
+  }
+}

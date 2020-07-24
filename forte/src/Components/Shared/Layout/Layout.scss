@@ -7,6 +7,7 @@ $masterTextShadow: 2px 2px 2px black;
 #layout-div {
   height: 100;
   display: flex;
+  width: 100vw;
   flex-direction: column;
   font-family: helvetica, sans-serif;
   justify-content: center;

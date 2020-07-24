@@ -5,7 +5,7 @@ import "./Landing.scss";
 
 const Landing = () => {
   return (
-    <div>
+    <div id="landing-wrapper">
       <div id="landing-links">
         <Link
           to="/signup"
