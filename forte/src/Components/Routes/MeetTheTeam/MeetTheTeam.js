@@ -1,8 +1,9 @@
 import React from "react";
+import "./MeetTheTeam.css"
 
 export default function MeetTheTeam() {
   return (
-    <div>
+    <div className="team">
       <h2>Meet the Forte Team</h2>
       <h3>Allie</h3>
       <img src="https://i.imgur.com/yHhs4Vx.jpg" alt="Allie P." />
