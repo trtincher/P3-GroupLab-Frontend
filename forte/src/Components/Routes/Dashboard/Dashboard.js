@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./Dashboard.css";
+import "./Dashboard.scss";
+
 import { DataContext } from "../../../App";
 import apiUrl from "../../../apiConfig";
 
@@ -16,7 +17,9 @@ const Dashboard = () => {
     const makeAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/students`);
-        // console.log("Response students: ", response);
+
+        console.log("Response students: ", response);
+
         setStudentMatches(response.data);
       } catch (err) {
         console.error(err);
@@ -30,7 +33,9 @@ const Dashboard = () => {
     const makeAPICall = async () => {
       try {
         const response = await axios(`${apiUrl}/teachers`);
-        // console.log("Response teachers: ", response);
+
+        console.log("Response teachers: ", response);
+
         setTeacherMatches(response.data);
       } catch (err) {
         console.error(err);
@@ -69,22 +74,64 @@ const Dashboard = () => {
       });
     }
 
-    // console.log('matchCounter - ', matchCounterTeach)
+
+    console.log("matchCounter - ", matchCounterTeach);
 
     return (
       <div>
+        <h2>Dashboard</h2>
         <h3>Welcome back {userName}!</h3>
         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
-        <h2>Students</h2>
-        <Link to="/connections">{activeUser[0].studentRoster.length}</Link>
+        <h2 className="dash-sub">Students</h2>
+        <Link
+          to="/connections"
+          style={{
+            fontFamily: "helvetica, sans-serif",
+            textDecoration: "none",
+            color: "white",
+            textDecoration: "none",
+            marginTop: "15px",
+            fontSize: "40px",
+            fontWeight: "600",
+          }}
+        >
+          {activeUser[0].studentRoster.length}
+        </Link>
 
-        <h2>Matches</h2>
-        <Link to="/matches">{matchCounterTeach}</Link>
+        <h2 className="dash-sub">Matches</h2>
+        <Link
+          to="/matches"
+          style={{
+            fontFamily: "helvetica, sans-serif",
+            textDecoration: "none",
+            color: "white",
+            textDecoration: "none",
+            marginTop: "15px",
+            fontSize: "40px",
+            fontWeight: "600",
+          }}
+        >
+          {matchCounterTeach}
+        </Link>
 
-        <h2>Instruments</h2>
-        <h2>{idiomList.length}</h2>
+        <h2 className="dash-sub">Instruments</h2>
+        <h2 className="dash-sub">{idiomList.length}</h2>
 
-        <Link to={email}>View your profile</Link>
+        <Link
+          to={email}
+          style={{
+            fontFamily: "helvetica, sans-serif",
+            textDecoration: "none",
+            color: "white",
+            textDecoration: "none",
+            marginTop: "15px",
+            fontSize: "30px",
+            fontWeight: "600",
+          }}
+        >
+          View your profile
+        </Link>
+
       </div>
     );
   }
@@ -95,6 +142,7 @@ const Dashboard = () => {
     studentMatches[0] &&
     teacherMatches[0] !== undefined &&
     activeUser[0].student === true
+
   ) {
     const userName = activeUser[0].firstName;
     const email = "/profile/" + activeUser[0].email;
@@ -120,18 +168,58 @@ const Dashboard = () => {
 
     return (
       <div>
+        <h2>Dashboard</h2>
         <h3>Welcome back {userName}!</h3>
         {/* <img src='activeUser[0].imgUrl' alt='userImg' /> */}
-        <h2>Teachers</h2>
-        <Link to="/connections">{activeUser[0].myTeachers.length}</Link>
+        <h2 className="dash-sub">Teachers</h2>
+        <Link
+          to="/connections"
+          style={{
+            fontFamily: "helvetica, sans-serif",
+            textDecoration: "none",
+            color: "white",
+            textDecoration: "none",
+            marginTop: "15px",
+            fontSize: "40px",
+            fontWeight: "600",
+          }}
+        >
+          {activeUser[0].myTeachers.length}
+        </Link>
 
-        <h2>Matches</h2>
-        <Link to="/matches">{matchCounterStudent}</Link>
+        <h2 className="dash-sub">Matches</h2>
+        <Link
+          to="/matches"
+          style={{
+            fontFamily: "helvetica, sans-serif",
+            textDecoration: "none",
+            color: "white",
+            textDecoration: "none",
+            marginTop: "15px",
+            fontSize: "40px",
+            fontWeight: "600",
+          }}
+        >
+          {matchCounterStudent}
+        </Link>
 
-        <h2>Instruments</h2>
-        <h2>{idiomCount}</h2>
+        <h2 className="dash-sub">Instruments</h2>
+        <h2 className="dash-sub">{idiomCount}</h2>
 
-        <Link to={email}>View your profile</Link>
+        <Link
+          to={email}
+          style={{
+            fontFamily: "helvetica, sans-serif",
+            textDecoration: "none",
+            color: "white",
+            textDecoration: "none",
+            marginTop: "15px",
+            fontSize: "40px",
+            fontWeight: "600",
+          }}
+        >
+          View your profile
+        </Link>
       </div>
     );
   } else {
