@@ -14,11 +14,11 @@ $masterTextShadow: 2px 2px 2px black;
   background-color: $masterBackground;
   color: $masterTextColor;
   text-shadow: $masterTextShadow;
-  h1 {
+  .layout-h1 {
     font-size: 50px;
   }
   @media only screen and (min-width: 768px) {
-    h1 {
+    .layout-h1h1 {
       font-size: 70px;
     }
   }
