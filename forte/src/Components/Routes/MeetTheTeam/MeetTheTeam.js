@@ -12,10 +12,10 @@ export default function MeetTheTeam() {
           alt="James H."
         />
         <p>
-        As a software engineer with a background in non-profit management and the performing arts, I bring perspective and passion to each project I approach. My work in labor relations and remote team management has measurably improved workplace satisfaction and productivity, and my work as a professional musician demonstrates my uncompromising commitment to producing polished, professional products on a tight deadline.
+        I work as the team coordinator, GitHub gatekeeper, and occasional troubleshooter. My primary contributions were: to develop overarching frameworks and file structures; maintain smooth task delegation and work flow; and to help problem solve with the SignUp component and EditProfile component. 
         <br/>
         <br/>
-On Forte, I spearheaded the backend development and deployment to Heroku and MongoDB Atlas. I then worked on the logic to show student matches and connections between teachers and students.
+I'm a software engineer who builds user forward websites that integrate function and design! I have a diverse background in philosophy, theology, art and beer, which has sharpened my analytical mind, given me an eye for aesthetic, and a drive towards productivity.
         </p>
       </div>
       <div className="team-card">
@@ -38,7 +38,10 @@ I'm a software engineer who builds user forward websites that integrate function
           alt="Tyler D."
         />
         <p>
-        I’m a software engineer incorporating a decade of experience in creative media-production roles into my front-end web design projects. My proficiency in applying newly-acquired technical skills in video content creation and audio production translates into my ability to learn and apply the various evolving languages of computer programming. As a full-time musician and performer, I acquired a comfort with public speaking that has helped foster strong leadership skills. My work in film production offices ingrained in me an ability to listen to my colleagues and supervisors, exchange ideas and problem-solving solutions, and work in a cohesive team-oriented environment to accomplish the company’s long-term goals.
+        I'm a software engineer incorporating a decade of experience in creative media-production roles into my  web-design projects. My goal is to build products that make music and art education more accessible to people around the world.
+        <br/>
+        <br/>
+I got the idea for Forte while working on a previous project, and this talented, hardworking team has made it into a reality. For my role, I developed the concept, the wireframes and UX, and built the Login, Sign-Up, About, StudentForm, TeacherForm, and Meet the Team components. Additionally, I was responsible for leading the styling of the project, and ensuring the aesthetic continuity of the user interface upon deployment.
         </p>
       </div>
       <div className="team-card">
