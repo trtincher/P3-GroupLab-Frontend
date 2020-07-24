@@ -51,7 +51,7 @@ export default function MeetTheTeam() {
         I'm a software developer with a background in customer success and accounting. From my experiences onboarding new customers in my previous role, I've cultivated a passion for improving user experience. As a developer, my goal is to solve customer pain points through software.
         <br/>
         <br/>
-        In this MERN app I mainly focused on the front-end and one front-end concerning part of the back-end (CORS). These are the components I created: Dashboard, Profile, Delete Profile, Edit Profile, Landing, and App.js. I also set up our basic React app and deployed on Surge. Profile and Dashboard were the most rewarding components I worked on. I'm proud of all the code I wrote on and of the Forte team!
+        In this MERN app I mainly focused on the front-end and one front-end concerning part of the back-end (CORS). These are the components I created: Dashboard, Profile, Delete Profile, Edit Profile, Landing, and App.js. I also set up our basic React app and deployed on Surge. Profile and Dashboard were the most rewarding components I worked on. I'm proud of all the code I wrote and of the Forte team!
         </p>
       </div>
     </div>
