@@ -25,13 +25,10 @@ On Forte, I spearheaded the backend development and deployment to Heroku and Mon
           alt="Travis T."
         />
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+        I work as the team coordinator, GitHub gatekeeper, and occasional troubleshooter. My primary contributions were: to develop overarching frameworks and file structures; maintain smooth task delegation and work flow; and to help problem solve with the SignUp component and EditProfile component. 
+        <br/>
+        <br/>
+I'm a software engineer who builds user forward websites that integrate function and design! I have a diverse background in philosophy, theology, art and beer, which has sharpened my analytical mind, given me an eye for aesthetic, and a drive towards productivity.
         </p>
       </div>
       <div className="team-card">
