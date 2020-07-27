@@ -186,7 +186,7 @@ const Profile = (props) => {
         <h2 className="profile-h2">Teaching Style</h2>
         <h3 className="profile-h3">{teachStyle}</h3>
 
-        <Link to="/editprofile">
+        <Link to="/editprofile" className='button'>
           {path === activeUser[0].email ? "Edit Profile" : null}
         </Link>
 
